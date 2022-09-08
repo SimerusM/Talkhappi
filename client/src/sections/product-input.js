@@ -67,44 +67,76 @@ const styles = {
   };
 
 // Speech to text recognition modules
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
+const Product = () => {
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+    isMicrophoneAvailable
+  } = useSpeechRecognition();
 
+  // Handle browser support error
+  if (!browserSupportsSpeechRecognition) {
+    return <span>Browser doesn't support speech recognition.</span>;
+  }
 
+  // Handling microphone setting turned off
+  if (!isMicrophoneAvailable) {
+    return <span>Enable your microphone to use the web app!</span>
+  }
 
-class Product extends Component {
-    constructor() {
-        super()
-        this.state = {
-            speech_to_text: "",
-            is_listening: false,
-        }
-    }
+  return (
+      <div style={styles.container}>
+          <div style={styles.speechTitle}>Talk to us, tell us about your day...</div>
+          <div style={styles.speechBox}>
+            {transcript}
+          </div>
+          <p>Microphone: {listening ? 'on' : 'off'}</p>
+          <button onClick={() => SpeechRecognition.startListening({
+            continuous: true,
+            language: 'en-US'
+          })}>
+            Start
+          </button>
+          <button onClick={SpeechRecognition.stopListening}>Stop</button>
+          <button onClick={resetTranscript}>Reset</button>
+      </div>
 
-    render() {
-        return (
-            <div style={styles.container}>
-                <div style={styles.speechTitle}>Talk to us, tell us about your day...</div>
-                <div style={styles.speechBox}>
-
-                </div>
-                <button onClick={console.log('hello')}>Hello</button>
-            </div>
-
-        );
-    }
-
+  );
 }
 
+export default Product
 
+// class Product extends Component {
+//     constructor() {
+//         super()
+//         this.state = {
+//             speech_to_text: "",
+//             is_listening: false,
+//         }
+//         this.testClick = this.testClick.bind(this)
+//     }
 
-export default Product;
+//     testClick() {
+//       console.log('hello')
+//     }
 
+//     render() {
+//         return (
+//             <div style={styles.container}>
+//                 <div style={styles.speechTitle}>Talk to us, tell us about your day...</div>
+//                 <div style={styles.speechBox}>
 
+//                 </div>
+//                 <button onClick={this.testClick()}>Hello</button>
+//             </div>
 
+//         );
+//     }
 
-// ERRORS:
-// need to fix the scale movement when you say a sentence with less than 40 characters
+// }
 
-
-// ERRORS:
-// need to fix the scale movement when you say a sentence with less than 40 characters
+// export default Product;

@@ -28,7 +28,9 @@
     "react-multi-carousel": "^2.5.5",
     "react-router-dom": "^6.3.0",
     "react-scroll": "^1.8.0",
+    "react-speech-recognition": "^3.9.1",
     "react-stickynode": "^3.0.3",
+    "regenerator-runtime": "^0.13.9",
     "theme-ui": "^0.3.1",
     "typeface-dm-sans": "^1.1.3"
   },
