@@ -8,14 +8,19 @@ import LogoDark from 'assets/logo.svg';
 import { DrawerProvider } from '../../contexts/drawer/drawer.provider';
 import MobileDrawer from './mobile-drawer';
 import menuItems from './header.data';
+import { useRouter } from 'next/router'
+
 
 export default function Header({ className }) {
+  const router = useRouter()
   return (
     <DrawerProvider>
       <header sx={styles.header} className={className} id="header">
-        <Container sx={styles.container}>
-          <Logo src={LogoDark} />
 
+        <Container sx={styles.container}>
+          {/* <Logo src={LogoDark} /> */}
+          <p sx={styles.logoText}>TALKHAPPI</p>
+          {router.pathname === "/product" ? <></> : ( <>
           <Flex as="nav" sx={styles.nav}>
             {menuItems.map(({ path, label }, i) => (
               <Link
@@ -43,6 +48,7 @@ export default function Header({ className }) {
           
 
           <MobileDrawer />
+          </>)}
         </Container>
       </header>
     </DrawerProvider>
@@ -116,4 +122,7 @@ const styles = {
       },
     },
   },
+  logoText: {
+    fontSize: '24px',
+  }
 };

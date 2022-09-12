@@ -36,7 +36,7 @@ const data = [
 
 export default function WorkFlow() {
   return (
-    <section sx={styles.workflow}>
+    <section sx={styles.workflow} id="workflow">
       <Container>
         <SectionHeader
           slogan="Whats the function"
