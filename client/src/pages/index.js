@@ -21,7 +21,7 @@ export default function IndexPage() {
     <ThemeProvider theme={theme}>
         <StickyProvider>
           <Layout>
-            <SEO title="Startup Landing 005" />
+            <SEO title="Talkhappi" />
             <Banner />
             <KeyFeature />
             <ServiceSection />

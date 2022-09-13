@@ -1,4 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
+import axios from 'axios';
+
+// Speech to text recognition modules
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 const styles = {
     card: {
@@ -28,7 +32,7 @@ const styles = {
       },
     },
     container: {
-        height: '80vh',
+        height: '55em',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -37,7 +41,7 @@ const styles = {
     },
     speechBox: {
         borderRadius: '5px',
-        height: '90vh',
+        height: '20em',
         width: '80%',
         color: 'white',
         backgroundColor: '#EA3A60',
@@ -66,10 +70,10 @@ const styles = {
 
   };
 
-// Speech to text recognition modules
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
-const Product = () => {
+
+export default function ProductInput() {
+  // Import variables from speech recognition hook
   const {
     transcript,
     listening,
@@ -78,6 +82,30 @@ const Product = () => {
     isMicrophoneAvailable
   } = useSpeechRecognition();
 
+  const [backendData, setBackendData] = useState([{}])
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api').then(
+      response => response.json()
+    ).then(
+      data => {
+        setBackendData(data)
+      }
+    )
+    console.log("ran")
+  }, [])
+
+  const test = () => {
+    fetch('http://localhost:5000/api').then(
+      response => response.json()
+    ).then(
+      data => {
+        setBackendData(data)
+      }
+    )
+    console.log("test clicked")
+  }
+
   // Handle browser support error
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
@@ -85,7 +113,7 @@ const Product = () => {
 
   // Handling microphone setting turned off
   if (!isMicrophoneAvailable) {
-    return <span>Enable your microphone to use the web app!</span>
+    return <span style={styles.container}><strong>Enable your microphone to use the web app!</strong></span>
   }
 
   return (
@@ -103,40 +131,16 @@ const Product = () => {
           </button>
           <button onClick={SpeechRecognition.stopListening}>Stop</button>
           <button onClick={resetTranscript}>Reset</button>
+          {(typeof backendData.data === 'undefined') ? (
+            <p>Loading...</p>
+          ) : (
+            backendData.data.map((data, i) => (
+              <p key={i}>{data}</p>
+            ))
+          )}
+          <button onClick={() => test()}>asdasd</button>
       </div>
 
   );
 }
 
-export default Product
-
-// class Product extends Component {
-//     constructor() {
-//         super()
-//         this.state = {
-//             speech_to_text: "",
-//             is_listening: false,
-//         }
-//         this.testClick = this.testClick.bind(this)
-//     }
-
-//     testClick() {
-//       console.log('hello')
-//     }
-
-//     render() {
-//         return (
-//             <div style={styles.container}>
-//                 <div style={styles.speechTitle}>Talk to us, tell us about your day...</div>
-//                 <div style={styles.speechBox}>
-
-//                 </div>
-//                 <button onClick={this.testClick()}>Hello</button>
-//             </div>
-
-//         );
-//     }
-
-// }
-
-// export default Product;

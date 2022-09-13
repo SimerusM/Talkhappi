@@ -1,10 +1,10 @@
 import React from 'react';
 import { ThemeProvider } from 'theme-ui';
-import { StickyProvider } from '../contexts/app/app.provider';
+import { StickyProvider } from 'contexts/app/app.provider';
 import theme from 'theme';
 import SEO from 'components/seo';
 import Layout from 'components/layout';
-import Product from '../sections/product-input'
+import ProductInput from 'components/product-input'
 
 
 export default function ProductPage() {
@@ -13,7 +13,7 @@ export default function ProductPage() {
         <StickyProvider>
           <Layout>
             <SEO title="Talkhappi" />
-            <Product/>
+            <ProductInput/>
           </Layout>
         </StickyProvider>
     </ThemeProvider>

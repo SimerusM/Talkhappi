@@ -1,22 +1,27 @@
 {
   "name": "@landing/005-next",
   "version": "0.0.1",
+  
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "backend-dev": "nodemon server/index.js",
     "build": "next build",
     "serve": "next start",
     "export": "next export",
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "dotenv": "^8.2.0",
+    "express": "^4.18.1",
     "framer-motion": "^2.7.5",
     "globby": "^11.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.5.3",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.5.4",
+    "nodemon": "^2.0.19",
     "prettier": "^2.1.2",
     "rc-drawer": "^4.1.0",
     "react": "16.13.0",
