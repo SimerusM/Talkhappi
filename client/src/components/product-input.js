@@ -70,8 +70,6 @@ const styles = {
 
   };
 
-
-
 export default function ProductInput() {
   // Import variables from speech recognition hook
   const {
@@ -85,14 +83,12 @@ export default function ProductInput() {
   const [backendData, setBackendData] = useState([{}])
 
   useEffect(() => {
-    fetch('http://localhost:5000/api').then(
+    fetch('http://localhost:5000/api/userData/').then(
       response => response.json()
     ).then(
-      data => {
-        setBackendData(data)
-      }
+      json => setBackendData([{json}])
     )
-    console.log("ran")
+    console.log(backendData, 'hi')
   }, [])
 
   const test = () => {
@@ -134,7 +130,7 @@ export default function ProductInput() {
           {(typeof backendData.data === 'undefined') ? (
             <p>Loading...</p>
           ) : (
-            backendData.data.map((data, i) => (
+            backendData.map((data, i) => (
               <p key={i}>{data}</p>
             ))
           )}

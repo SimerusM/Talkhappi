@@ -12,7 +12,7 @@ export default function Banner() {
       <Container sx={styles.banner.container}>
         <Box sx={styles.banner.contentBox}>
           <Heading as="h1" variant="heroPrimary">
-            The Future of Mental Wellness
+            Changing Mental Wellness
           </Heading>
           <Text as="p" variant="heroSecondary">
             Get access to our powerful and accurate mental health wellness counselling product which uses Machine Learning and Artificial Intelligence to help you better yourself using the concept of gamification!
