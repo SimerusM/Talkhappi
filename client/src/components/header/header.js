@@ -11,6 +11,7 @@ import menuItems from './header.data';
 import { useRouter } from 'next/router'
 
 
+
 export default function Header({ className }) {
   const router = useRouter()
   return (
@@ -19,8 +20,8 @@ export default function Header({ className }) {
 
         <Container sx={styles.container}>
           {/* <Logo src={LogoDark} /> */}
-          <p sx={styles.logoText}>TALKHAPPI</p>
-          {router.pathname === "/product" ? <></> : ( <>
+          <a href="/" sx={styles.logoLink}><p sx={styles.logoText}>TALKHAPPI</p></a>
+          {(router.pathname === "/product" || router.pathname === "/dashboard") ? <></> : ( <>
           <Flex as="nav" sx={styles.nav}>
             {menuItems.map(({ path, label }, i) => (
               <Link
@@ -35,14 +36,27 @@ export default function Header({ className }) {
                 {label}
               </Link>
             ))}
+
+        
           </Flex>
-          <a href="/product"> 
+
+          <a href="/product" > 
             <Button
               className="donate__btn"
               variant="secondary"
               aria-label="Get Started"
             >
               Get Started
+            </Button>
+          </a> 
+
+          <a href="/dashboard" > 
+            <Button
+              className="donate__btn"
+              variant="secondary"
+              aria-label="dashboard"
+            >
+              Dashboard
             </Button>
           </a> 
           
@@ -85,6 +99,7 @@ const styles = {
       mr: [15, 20, null, null, 0],
       ml: ['auto', null, null, null, 0],
     },
+    
     '&.sticky': {
       position: 'fixed',
       backgroundColor: 'background',
@@ -124,5 +139,9 @@ const styles = {
   },
   logoText: {
     fontSize: '24px',
+  },
+  logoLink: {
+    textDecoration: 'none',
+    color: 'inherit'
   }
 };
