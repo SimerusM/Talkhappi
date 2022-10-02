@@ -45,7 +45,7 @@ export default function UserDashboard() {
         )}
     
         fetchUserData()
-    }, [])
+    }, [dispatch])
 
     return (
         <div style={styles.dashboardContainer}>

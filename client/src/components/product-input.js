@@ -8,6 +8,7 @@ import { useUserDataContext } from 'hooks/useUserDataContext';
 
 // import components
 import UserDataDetails from './user-data-details.js';
+import AddUserData from './add-user-data.js';
 
 const styles = {
     card: {
@@ -106,34 +107,8 @@ export default function ProductInput() {
   // testing
   const [id, setId] = useState('123456')
   const [scores, setScores] = useState('182347')
+  const userData = {id, scores, transcript}
 
-  // function to add user data to DB
-  const AddUserData = async () => {
-    const userData = {id, scores, transcript}
-
-    const response = await fetch('http://localhost:5000/api/userData/', {
-      method: 'POST',
-      body: JSON.stringify(userData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    const json = await response.json()
-
-    if (!response.ok) {
-      console.log('Error')
-    }
-    if (response.ok) {
-      // dispatching add user data context to update global user_data state
-      dispatch({type: 'CREATE_USERDATA', payload: json})
-      console.log('Data added')
-    }
-  }
-
-  // function to delete user data
-  const DeleteUserData = async () => {
-
-  }
 
   // Handle browser support error
   if (!browserSupportsSpeechRecognition) {
@@ -168,8 +143,9 @@ export default function ProductInput() {
           })}
 
           <h1>hi</h1>
-          <button onClick={() => console.log(backendData)}>Debug backendData</button>
-          <button onClick={() => AddUserData()}>Send data</button>
+          <button onClick={() => console.log(user_data)}>Debug backendData</button>
+          <AddUserData userData={userData} />
+          {/* <button onClick={() => AddUserData()}>Send data</button> */}
       </div>
 
   );

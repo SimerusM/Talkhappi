@@ -1,3 +1,8 @@
+import { useUserDataContext } from "hooks/useUserDataContext"
+
+// date fns api
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 const styles = {
     UserDataDetailContainer: {
         background: '#fff',
@@ -10,12 +15,27 @@ const styles = {
 }
 
 const UserDataDetails = ({ userData }) => {
+    const { dispatch } = useUserDataContext()
+
+    // function to delete user data
+    const DeleteUserData = async () => {
+        const response = await fetch('http://localhost:5000/api/userData/' + userData._id, {
+            method: 'DELETE'
+        })
+        const json = await response.json()
+
+        if (response.ok) {
+            dispatch({type: 'DELETE_USERDATA', payload: json})
+        }
+    }
+
     return (
         <div style={styles.UserDataDetailContainer}>
             <h4>{userData._id}</h4>
             <p><strong>Score: </strong> {userData.scores}</p>
             <p><strong>Transcript: </strong> {userData.transcript}</p>
             <p>{userData.createdAt}</p>
+            <button onClick={DeleteUserData}>Delete</button>
         </div>
     )
 }
