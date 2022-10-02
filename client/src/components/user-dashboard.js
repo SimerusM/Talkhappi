@@ -1,7 +1,13 @@
 import React, { Component, useEffect, useState } from 'react';
+
+// componenents
 import DashboardNewBox from 'components/dashboard-new-box'
 import DashboardGraph from './dashboard-graph';
 import DashboardTalkBox from 'components/dashboard-box';
+import UserDataDetails from './user-data-details.js';
+
+// context
+import { useUserDataContext } from 'hooks/useUserDataContext';
 
 const styles = {
     dashboardContainer: {
@@ -27,6 +33,20 @@ const styles = {
 
 
 export default function UserDashboard() {
+    const { user_data, dispatch } = useUserDataContext()
+    useEffect(() => {
+        const fetchUserData = async () => {
+        const response = await fetch('http://localhost:5000/api/userData/')
+        const json = await response.json()
+        
+        // check if response is ok
+        if (response.ok) (
+            dispatch({type: 'SET_USERDATA', payload: json})
+        )}
+    
+        fetchUserData()
+    }, [])
+
     return (
         <div style={styles.dashboardContainer}>
         
@@ -37,16 +57,21 @@ export default function UserDashboard() {
             
             <div style={styles.DashboardBoxContainer}>
 
-            <DashboardNewBox/>
-            <DashboardTalkBox/>
-            <DashboardTalkBox/>
-            <DashboardTalkBox/>
-            <DashboardTalkBox/>
-            <DashboardTalkBox/>
-            <DashboardTalkBox/>
+                <DashboardNewBox/>
+                <DashboardTalkBox/>
+                <DashboardTalkBox/>
+                <DashboardTalkBox/>
+                <DashboardTalkBox/>
+                <DashboardTalkBox/>
+                <DashboardTalkBox/>
 
             </div>
             
+            {user_data && user_data.map((userData) => {
+                return (
+                    <UserDataDetails key={userData._id} userData={userData} />
+                )
+            })}
         </div>
     
     

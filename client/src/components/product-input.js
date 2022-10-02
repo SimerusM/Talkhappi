@@ -6,6 +6,9 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 // import context
 import { useUserDataContext } from 'hooks/useUserDataContext';
 
+// import components
+import UserDataDetails from './user-data-details.js';
+
 const styles = {
     card: {
       display: 'flex',
@@ -34,12 +37,11 @@ const styles = {
       },
     },
     container: {
-        height: '55em',
+        height: 'auto',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        // 
     },
     speechBox: {
         borderRadius: '5px',
@@ -128,6 +130,11 @@ export default function ProductInput() {
     }
   }
 
+  // function to delete user data
+  const DeleteUserData = async () => {
+
+  }
+
   // Handle browser support error
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
@@ -156,7 +163,7 @@ export default function ProductInput() {
           <button onClick={resetTranscript}>Reset</button>
           {user_data && user_data.map((userData) => {
             return (
-              <p key={userData._id}>{userData.scores}</p>
+              <UserDataDetails key={userData._id} userData={userData} />
             )
           })}
 
