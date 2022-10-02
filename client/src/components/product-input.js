@@ -1,5 +1,4 @@
 import React, { Component, useEffect, useState } from 'react';
-import axios from 'axios';
 
 // Speech to text recognition modules
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
@@ -83,24 +82,53 @@ export default function ProductInput() {
   const [backendData, setBackendData] = useState([{}])
 
   useEffect(() => {
+    const fetchUserData = async () => {
+      const response = await fetch('http://localhost:5000/api/userData/')
+      const json = await response.json()
+
+      // if (response.ok) (
+        
+      // )
+    }
     fetch('http://localhost:5000/api/userData/').then(
       response => response.json()
     ).then(
-      json => setBackendData([{json}])
+      json => setBackendData({json})
     )
     console.log(backendData, 'hi')
   }, [])
 
-  const test = () => {
-    fetch('http://localhost:5000/api').then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-    console.log("test clicked")
-  }
+  // const sendData = async (e) => {
+  //   // e.preventDefault()
+  //   const userData = {transcript, scores: [2, 3], id: '123'}
+
+  //   const response = await fetch('http://localhost:5000/api/userData', {
+  //     method: "POST",
+  //     headers: {
+  //         'Content-Type': 'application/json', 
+  //     },
+  //     body: JSON.stringify.userData
+  //   });
+
+  //   const json = await response.json
+
+  //   if (!response.ok) {
+  //     console.log(json.error)
+  //   }
+  //   if (response.ok) {
+  //     alert('Data added')
+  //     console.log('data added')
+  //   }
+  //   // }
+  //   // fetch('http://localhost:5000/api/userData', options).then(
+  //   //   response => response.json()
+  //   // ).then(
+  //   //   data => {
+  //   //     setBackendData(data)
+  //   //   }
+  //   // )
+  //   // console.log("data sent to mongodb clicked")
+  // }
 
   // Handle browser support error
   if (!browserSupportsSpeechRecognition) {
@@ -134,7 +162,8 @@ export default function ProductInput() {
               <p key={i}>{data}</p>
             ))
           )}
-          <button onClick={() => test()}>asdasd</button>
+          <button onClick={() => console.log(backendData)}>Debug backendData</button>
+          <button onClick={() => sendData()}>send data</button>
       </div>
 
   );

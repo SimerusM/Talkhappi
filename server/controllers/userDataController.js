@@ -1,10 +1,17 @@
 const UserData = require('../models/userDataModel')
 const mongoose = require('mongoose')
 
+// OPENAI and IBM api endpoints
+
+// const receiveTranscript
+
+
+// MONGODB api endpoints
+
 // get all user data
 const getAllUserData = async (req, res) => {
     const all_user_data = await UserData.find({}).sort({createdAt: -1})
-
+    console.log(all_user_data)
     res.status(200).json(all_user_data)
 }
 
@@ -31,11 +38,12 @@ const getUserData = async (req, res) => {
 
 // create new user data
 const createUserData = async (req, res) => {
-    const {id, scores} = req.body
+    const {id, scores, transcript} = req.body
     
     const newUserData = new UserData({
         id: id,
-        scores: scores
+        scores: scores,
+        transcript: transcript
     })
 
     // add doc to db

@@ -32,7 +32,7 @@ mongoose.connect(process.env.MONGO_URI)
         console.log(error)
     })
 
-app.get("/api", (req, res) => {
-    res.json({"data": ["data1", "data2", "data3"]})
-})
+// app.get("/api", (req, res) => {
+//     res.json({"data": ["data1", "data2", "data3"]})
+// })
 

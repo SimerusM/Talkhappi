@@ -10,6 +10,9 @@ const {
 // create instance of express router
 const router = express.Router()
 
+// Receive transcript endpoint
+
+
 // CRUD operations
 
 // GET all user data
@@ -26,5 +29,7 @@ router.delete('/:id', deleteUserData)
 
 // UPDATE user data
 router.patch('/:id', updateUserData)
+
+
 
 module.exports = router
