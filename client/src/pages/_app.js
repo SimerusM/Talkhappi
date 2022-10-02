@@ -6,6 +6,7 @@ import 'react-modal-video/css/modal-video.min.css';
 import 'rc-drawer/assets/index.css';
 import 'typeface-dm-sans';
 import 'regenerator-runtime/runtime';
+import { UserDataContextProvider } from 'contexts/UserDataContext';
 
 export default function CustomApp({ Component, pageProps }) {
   useEffect(() => {
@@ -14,5 +15,9 @@ export default function CustomApp({ Component, pageProps }) {
     Router.events.on('routeChangeComplete', logPageView);
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <UserDataContextProvider>
+      <Component {...pageProps} />
+    </UserDataContextProvider>
+  );
 }
