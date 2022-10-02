@@ -1,4 +1,8 @@
 import React, { Component, useEffect, useState } from 'react';
+<<<<<<< HEAD
+=======
+// import axios from 'axios';
+>>>>>>> 42dd92d770f49476f6c4b831e3c37d80e1b2c824
 
 // Speech to text recognition modules
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
@@ -81,6 +85,7 @@ export default function ProductInput() {
 
   const [backendData, setBackendData] = useState([{}])
 
+<<<<<<< HEAD
   useEffect(() => {
     const fetchUserData = async () => {
       const response = await fetch('http://localhost:5000/api/userData/')
@@ -97,6 +102,16 @@ export default function ProductInput() {
     )
     console.log(backendData, 'hi')
   }, [])
+=======
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/api/userData/').then(
+  //     response => response.json()
+  //   ).then(
+  //     json => setBackendData([{json}])
+  //   )
+  //   console.log(backendData, 'hi')
+  // }, [])
+>>>>>>> 42dd92d770f49476f6c4b831e3c37d80e1b2c824
 
   // const sendData = async (e) => {
   //   // e.preventDefault()
