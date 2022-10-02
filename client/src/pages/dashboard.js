@@ -12,7 +12,7 @@ export default function DashboardPage() {
       <ThemeProvider theme={theme}>
           <StickyProvider>
             <Layout>
-              <SEO title="Talkhappi - dashboard" />
+              <SEO title="Talkhappi - Dashboard" />
                 <UserDashboard/>    
             </Layout>
           </StickyProvider>

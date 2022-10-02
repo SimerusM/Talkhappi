@@ -5,16 +5,13 @@ const Schema = mongoose.Schema
 const userDataSchema = new Schema({
     id: {
         type: String,
-        required: true
     },
-    scores: [{
+    scores: {
         type: Number,
-        required: true
-    }],
-    transcript: [{
+    },
+    transcript: {
         type: String,
-        required: true
-    }]
+    }
 
 }, { timestamps: true })
 

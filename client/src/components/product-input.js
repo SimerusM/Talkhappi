@@ -1,8 +1,4 @@
 import React, { Component, useEffect, useState } from 'react';
-<<<<<<< HEAD
-=======
-// import axios from 'axios';
->>>>>>> 42dd92d770f49476f6c4b831e3c37d80e1b2c824
 
 // Speech to text recognition modules
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
@@ -83,67 +79,46 @@ export default function ProductInput() {
     isMicrophoneAvailable
   } = useSpeechRecognition();
 
-  const [backendData, setBackendData] = useState([{}])
+  const [backendData, setBackendData] = useState(null)
 
-<<<<<<< HEAD
+  // Hook to fetch user data upon load
   useEffect(() => {
     const fetchUserData = async () => {
       const response = await fetch('http://localhost:5000/api/userData/')
       const json = await response.json()
 
-      // if (response.ok) (
-        
-      // )
+      // check if response is ok
+      if (response.ok) (
+        setBackendData(json)
+      )
     }
-    fetch('http://localhost:5000/api/userData/').then(
-      response => response.json()
-    ).then(
-      json => setBackendData({json})
-    )
-    console.log(backendData, 'hi')
+
+    fetchUserData()
   }, [])
-=======
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/api/userData/').then(
-  //     response => response.json()
-  //   ).then(
-  //     json => setBackendData([{json}])
-  //   )
-  //   console.log(backendData, 'hi')
-  // }, [])
->>>>>>> 42dd92d770f49476f6c4b831e3c37d80e1b2c824
 
-  // const sendData = async (e) => {
-  //   // e.preventDefault()
-  //   const userData = {transcript, scores: [2, 3], id: '123'}
+  const [id, setId] = useState('243')
+  const [scores, setScores] = useState('45')
 
-  //   const response = await fetch('http://localhost:5000/api/userData', {
-  //     method: "POST",
-  //     headers: {
-  //         'Content-Type': 'application/json', 
-  //     },
-  //     body: JSON.stringify.userData
-  //   });
+  // function to add user data to DB
+  const AddUserData = async () => {
+    const userData = {id, scores, transcript}
 
-  //   const json = await response.json
+    const response = await fetch('http://localhost:5000/api/userData/', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const json = await response.json()
 
-  //   if (!response.ok) {
-  //     console.log(json.error)
-  //   }
-  //   if (response.ok) {
-  //     alert('Data added')
-  //     console.log('data added')
-  //   }
-  //   // }
-  //   // fetch('http://localhost:5000/api/userData', options).then(
-  //   //   response => response.json()
-  //   // ).then(
-  //   //   data => {
-  //   //     setBackendData(data)
-  //   //   }
-  //   // )
-  //   // console.log("data sent to mongodb clicked")
-  // }
+    if (!response.ok) {
+      console.log('Error')
+    }
+    if (response.ok) {
+      console.log('Data added')
+    }
+  }
 
   // Handle browser support error
   if (!browserSupportsSpeechRecognition) {
@@ -168,17 +143,18 @@ export default function ProductInput() {
           })}>
             Start
           </button>
+
           <button onClick={SpeechRecognition.stopListening}>Stop</button>
           <button onClick={resetTranscript}>Reset</button>
-          {(typeof backendData.data === 'undefined') ? (
-            <p>Loading...</p>
-          ) : (
-            backendData.map((data, i) => (
-              <p key={i}>{data}</p>
-            ))
-          )}
+          {backendData && backendData.map((userData) => {
+            return (
+              <p key={userData._id}>{userData._id}</p>
+            )
+          })}
+
+          <h1>hi</h1>
           <button onClick={() => console.log(backendData)}>Debug backendData</button>
-          <button onClick={() => sendData()}>send data</button>
+          <button onClick={() => AddUserData()}>Send data</button>
       </div>
 
   );
