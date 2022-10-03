@@ -1,7 +1,7 @@
 import { useUserDataContext } from "hooks/useUserDataContext"
 
 // date fns api
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+// import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const styles = {
     UserDataDetailContainer: {

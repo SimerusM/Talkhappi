@@ -11,14 +11,12 @@ export default function DashboardGraph() {
         labels: ["May", "June", "July", "August"],
         datasets: [
             {
-                data: [1, 2, 3, 4, 5, 6, 7],
-                backgroundColor: [
-                    "#f38b4a"
-                ],
+                data: [1, 6, 3, 0, 5, 6, 7],
+                backgroundColor: "#000000",
                 borderColor: '#B582F4',
-                pointBorderColor: '#2ABDF3',
+                // pointBorderColor: '#2ABDF3',
                 pointBorderWidth: 4,
-                hoverBorderColor : "#000",
+                // hoverBorderColor : "#000",
                 tension: 0.4
             }
         ]

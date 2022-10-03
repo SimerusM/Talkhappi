@@ -5,6 +5,7 @@ import DashboardNewBox from 'components/dashboard-new-box'
 import DashboardGraph from './dashboard-graph';
 import DashboardTalkBox from 'components/dashboard-box';
 import UserDataDetails from './user-data-details.js';
+import ScorePopUpWin from './scorePopUpWin';
 
 // context
 import { useUserDataContext } from 'hooks/useUserDataContext';
@@ -14,25 +15,48 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#F6F6F6',
+        
+        
+        transition: 'all 0.15s',
+        '&:hover': {
+            color: '#000000',
+            cursor: 'pointer',
+        },
+        '&.active': {
+            color: '#000000',
+        },
+        
     },
     DashboardBoxContainer: {
         width: '80%',
         display: 'flex',
         gap: '15px',
+        marginBottom: '50px',
         flexWrap: 'wrap',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
+      
 
     },
     GraphContainer: {
-        width: '80%'
+        margin: '11vh',
+        width: '70%',
+        backgroundColor: '#FFFFFF',
+        padding: '20px',
+        boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+        borderRadius: '10px'
+        
+    
     }
 }
 
 
 
 export default function UserDashboard() {
+    const [popUpOpen, setPopUpOpen] = useState(true);
+
     const { user_data, dispatch } = useUserDataContext()
     useEffect(() => {
         const fetchUserData = async () => {
@@ -49,7 +73,9 @@ export default function UserDashboard() {
 
     return (
         <div style={styles.dashboardContainer}>
-        
+            {/* Pop popup window if state is true, pass a callback function for the close button */}
+            {popUpOpen && <ScorePopUpWin callback={() => {setPopUpOpen(!popUpOpen)}}/>}
+
             <div style={styles.GraphContainer}>
                 <DashboardGraph/>
             </div>
@@ -58,15 +84,10 @@ export default function UserDashboard() {
             <div style={styles.DashboardBoxContainer}>
 
                 <DashboardNewBox/>
-                <DashboardTalkBox/>
-                <DashboardTalkBox/>
-                <DashboardTalkBox/>
-                <DashboardTalkBox/>
-                <DashboardTalkBox/>
-                <DashboardTalkBox/>
+                <DashboardTalkBox callback={(argu) => {setPopUpOpen(argu)}}/>
 
             </div>
-            
+          
             {user_data && user_data.map((userData) => {
                 return (
                     <UserDataDetails key={userData._id} userData={userData} />
