@@ -85,7 +85,6 @@ export default function ProductInput() {
     isMicrophoneAvailable
   } = useSpeechRecognition();
 
-  
 
   // Hook to fetch user data upon load
   const {user_data, dispatch} = useUserDataContext()
@@ -144,10 +143,10 @@ export default function ProductInput() {
 
           <h1>hi</h1>
           <button onClick={() => console.log(user_data)}>Debug backendData</button>
+          
+          {/* Submit button  */}
           <AddUserData userData={userData} />
-          {/* <button onClick={() => AddUserData()}>Send data</button> */}
       </div>
-
   );
 }
 

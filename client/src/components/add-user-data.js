@@ -18,12 +18,12 @@ const AddUserData = ({ userData }) => {
         const json = await response.json()
 
         if (!response.ok) {
-        console.log('Error')
+            console.log('Error')
         }
         if (response.ok) {
-        // dispatching add user data context to update global user_data state
-        dispatch({type: 'CREATE_USERDATA', payload: json})
-        console.log('Data added')
+            // dispatching add user data context to update global user_data state
+            dispatch({type: 'CREATE_USERDATA', payload: json})
+            console.log('Data added')
         }
     }
 
