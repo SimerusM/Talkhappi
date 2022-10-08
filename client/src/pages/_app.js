@@ -7,6 +7,7 @@ import 'rc-drawer/assets/index.css';
 import 'typeface-dm-sans';
 import 'regenerator-runtime/runtime';
 import { UserDataContextProvider } from 'contexts/UserDataContext';
+import { AuthContextProvider } from 'contexts/AuthContext';
 
 export default function CustomApp({ Component, pageProps }) {
   useEffect(() => {
@@ -16,8 +17,10 @@ export default function CustomApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <UserDataContextProvider>
-      <Component {...pageProps} />
-    </UserDataContextProvider>
+    <AuthContextProvider>
+      <UserDataContextProvider>
+        <Component {...pageProps} />
+      </UserDataContextProvider>
+    </AuthContextProvider>
   );
 }
