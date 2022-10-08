@@ -16,7 +16,7 @@ const styles = {
         justifyContent: 'center',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: '#F6F6F6',
+        backgroundColor: '#f799ae',
         
         
         transition: 'all 0.15s',
@@ -41,7 +41,7 @@ const styles = {
 
     },
     GraphContainer: {
-        margin: '11vh',
+        margin: '15vh',
         width: '70%',
         backgroundColor: '#FFFFFF',
         padding: '20px',
@@ -55,7 +55,7 @@ const styles = {
 
 
 export default function UserDashboard() {
-    const [popUpOpen, setPopUpOpen] = useState(true);
+    const [popUpOpen, setPopUpOpen] = useState(-1);
 
     const { user_data, dispatch } = useUserDataContext()
     useEffect(() => {
@@ -74,7 +74,7 @@ export default function UserDashboard() {
     return (
         <div style={styles.dashboardContainer}>
             {/* Pop popup window if state is true, pass a callback function for the close button */}
-            {popUpOpen && <ScorePopUpWin callback={() => {setPopUpOpen(!popUpOpen)}}/>}
+            {(popUpOpen != -1) && <ScorePopUpWin callback={() => {setPopUpOpen(-1)}} list_id={user_data[popUpOpen]}/>}
 
             <div style={styles.GraphContainer}>
                 <DashboardGraph/>
@@ -84,17 +84,23 @@ export default function UserDashboard() {
             <div style={styles.DashboardBoxContainer}>
 
                 <DashboardNewBox/>
-                <DashboardTalkBox callback={(argu) => {setPopUpOpen(argu)}}/>
-
+ 
+                {user_data && user_data.map((userData, index) => {
+                return (
+                    <DashboardTalkBox key={userData._id} callback={(id) => {setPopUpOpen(id); console.log(id)}} list_id={index} score={userData.scores}/>
+                )
+            })}
             </div>
-          
-            {user_data && user_data.map((userData) => {
+            
+            {/* {user_data && user_data.map((userData) => {
                 return (
                     <UserDataDetails key={userData._id} userData={userData} />
                 )
-            })}
+            })} */}
         </div>
     
     
     );
 }
+
+

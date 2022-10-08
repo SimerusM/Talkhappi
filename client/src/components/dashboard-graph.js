@@ -13,7 +13,7 @@ export default function DashboardGraph() {
             {
                 data: [1, 6, 3, 0, 5, 6, 7],
                 backgroundColor: "#000000",
-                borderColor: '#B582F4',
+                borderColor: '#EA3A60',
                 // pointBorderColor: '#2ABDF3',
                 pointBorderWidth: 4,
                 // hoverBorderColor : "#000",

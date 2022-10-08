@@ -1,3 +1,5 @@
+
+
 import React, { Component, useEffect, useState } from 'react';
 import { BsPlus } from "react-icons/bs";
 
@@ -27,11 +29,10 @@ export default function DashboardNewBox() {
     return (
         <a href="/product" style={styles.linkContainer}>
             <div style={styles.NewBoxContainer}>         
-                <BsPlus size="4em" color='#b538b5'/>
+                <BsPlus size="4em" color='#EA3A60'/>
                 <div>New <br/>Talk!</div>
             </div>
         </a>
         
     );
 }
-

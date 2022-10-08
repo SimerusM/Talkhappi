@@ -1,4 +1,7 @@
+
 import React, { Component, useEffect, useState } from 'react';
+import { BsXCircle } from "react-icons/bs";
+
 
 const styles = {
     popUpBoxContainer: {
@@ -31,13 +34,19 @@ const styles = {
 }
 
 
-export default function ScorePopUpWin ({ callback }) {
+export default function ScorePopUpWin ({ callback , list_id}) {
 
     return (
         <div style={styles.popUpBoxContainer}>
             <div style={styles.popUpBox}>
-                <button onClick={callback}>Close</button>
+                {console.log(list_id)}
+                <BsXCircle size="1.5em" color='#EA3A60' onClick={callback}/>
+                <p>Score: {list_id.transcript}</p>
+                <p>Transcript: {list_id.scores}</p>
+
+                <p>Date: {list_id.createdAt}</p>
             </div>
         </div>
     )
 }
+
