@@ -21,7 +21,7 @@ export default function Header({ className }) {
         <Container sx={styles.container}>
           {/* <Logo src={LogoDark} /> */}
           <a href="/" sx={styles.logoLink}><p sx={styles.logoText}>TALKHAPPI</p></a>
-          {(router.pathname === "/product" || router.pathname === "/dashboard") ? <></> : ( <>
+          {(router.pathname === "/product" || router.pathname === "/dashboard" || router.pathname === "/signup") ? <></> : ( <>
           <Flex as="nav" sx={styles.nav}>
             {menuItems.map(({ path, label }, i) => (
               <Link

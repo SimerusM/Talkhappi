@@ -8,6 +8,7 @@ import 'typeface-dm-sans';
 import 'regenerator-runtime/runtime';
 import { UserDataContextProvider } from 'contexts/UserDataContext';
 import { AuthContextProvider } from 'contexts/AuthContext';
+import '../styles/styles.css'
 
 export default function CustomApp({ Component, pageProps }) {
   useEffect(() => {
