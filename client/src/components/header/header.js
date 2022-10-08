@@ -40,6 +40,14 @@ export default function Header({ className }) {
         
           </Flex>
 
+          <a href="/signup"> 
+            Sign up
+          </a> 
+
+          <a href="/login"> 
+            Log in
+          </a> 
+
           <a href="/product" > 
             <Button
               className="donate__btn"
@@ -50,7 +58,7 @@ export default function Header({ className }) {
             </Button>
           </a> 
 
-          <a href="/dashboard" > 
+          <a href="/dashboard"> 
             <Button
               className="donate__btn"
               variant="secondary"
@@ -59,6 +67,8 @@ export default function Header({ className }) {
               Dashboard
             </Button>
           </a> 
+
+          
           
 
           <MobileDrawer />
