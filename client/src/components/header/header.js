@@ -11,15 +11,22 @@ import {menuItems, additionLinks} from './header.data';
 import { useRouter } from 'next/router'
 
 import { useLogout } from 'hooks/useLogout';
-
+import { useAuthContext } from 'hooks/useAuthContext';
 
 export default function Header({ className }) {
   const router = useRouter()
 
+  // logout hook
   const { logout } = useLogout()
+
+  // global user state
+  const { user } = useAuthContext()
+
+  // logs user out upon click
   const handleClick = () => {
     logout()
   }
+
   return (
     <DrawerProvider>
       <header sx={styles.header} className={className} id="header">
@@ -50,10 +57,38 @@ export default function Header({ className }) {
               </a>
             ))}
 
-          <div>
-            <button onClick={handleClick}>Log out</button>
-          </div>  
+          {/* Conditional rendering to check if user is logged in */}
+          { user && (
+            <>
+              <div>
+                <span>{user.email}</span>
+                <button onClick={handleClick}>Log out</button>
+              </div>  
 
+              <a href="/dashboard"> 
+                <Button
+                  className="donate__btn"
+                  variant="secondary"
+                  aria-label="dashboard"
+                >
+                  Dashboard
+                </Button>
+              </a> 
+            </>
+          )}
+
+          { !user && (
+            <>
+              <a href="/signup">
+                Signup
+              </a>
+              <a href="/login">
+                Login
+              </a>
+            </>
+          )}
+
+          
           <a href="/product" > 
             <Button
               className="donate__btn"
@@ -63,16 +98,9 @@ export default function Header({ className }) {
               Get Started
             </Button>
           </a> 
+          
 
-          <a href="/dashboard"> 
-            <Button
-              className="donate__btn"
-              variant="secondary"
-              aria-label="dashboard"
-            >
-              Dashboard
-            </Button>
-          </a> 
+          
 
           </Flex>
 
