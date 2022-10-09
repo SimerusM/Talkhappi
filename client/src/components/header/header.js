@@ -7,7 +7,7 @@ import Logo from 'components/logo';
 import LogoDark from 'assets/logo.svg';
 import { DrawerProvider } from '../../contexts/drawer/drawer.provider';
 import MobileDrawer from './mobile-drawer';
-import menuItems from './header.data';
+import {menuItems, additionLinks} from './header.data';
 import { useRouter } from 'next/router'
 
 import { useLogout } from 'hooks/useLogout';
@@ -41,22 +41,15 @@ export default function Header({ className }) {
               >
                 {label}
               </Link>
+              
             ))}
 
-        
-          </Flex>
+          {additionLinks.map(({ path, label }, i) => (
+              <a href={path} key={i} style={styles.additionalLinksStyles}>
+                {label}
+              </a>
+            ))}
 
-          <div>
-            <button onClick={handleClick}>Log out</button>
-          </div>
-
-          <a href="/signup"> 
-            Sign up
-          </a> 
-
-          <a href="/login"> 
-            Log in
-          </a> 
 
           <a href="/product" > 
             <Button
@@ -77,6 +70,10 @@ export default function Header({ className }) {
               Dashboard
             </Button>
           </a> 
+
+          </Flex>
+
+          
 
           
           
@@ -136,10 +133,16 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+
+  additionalLinksStyles: {
+    textDecoration: 'none',
+  },
+
   nav: {
     mx: 'auto',
     display: 'none',
-    '@media screen and (min-width: 1024px)': {
+    color: 'inherit',
+    '@media screen and (min-width: 1220px)': {
       display: 'block',
     },
     a: {
@@ -163,5 +166,7 @@ const styles = {
   logoLink: {
     textDecoration: 'none',
     color: 'inherit'
-  }
+  },
+
+  
 };
