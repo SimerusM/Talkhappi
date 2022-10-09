@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Background from 'assets/login-background.png'
+import Background from 'assets/signup-background.png'
 import { useSignup } from '../hooks/useSignup'
 
 const styles = {

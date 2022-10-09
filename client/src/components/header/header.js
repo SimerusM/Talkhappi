@@ -3,8 +3,8 @@ import { jsx, Container, Flex, Button } from 'theme-ui';
 import { keyframes } from '@emotion/core';
 import { Link } from 'react-scroll';
 // import Link from 'next/link'
-import Logo from 'components/logo';
-import LogoDark from 'assets/logo.svg';
+// import Logo from 'components/logo';
+// import LogoDark from 'assets/logo.svg';
 import { DrawerProvider } from '../../contexts/drawer/drawer.provider';
 import MobileDrawer from './mobile-drawer';
 import {menuItems, additionLinks} from './header.data';
@@ -32,10 +32,13 @@ export default function Header({ className }) {
       <header sx={styles.header} className={className} id="header">
 
         <Container sx={styles.container}>
-          {/* <Logo src={LogoDark} /> */}
+
           <a href="/" sx={styles.logoLink}><p sx={styles.logoText}>TALKHAPPI</p></a>
-          {(router.pathname === "/product" || router.pathname === "/dashboard" || router.pathname === "/signup") ? <></> : ( <>
+
+
           <Flex as="nav" sx={styles.nav}>
+
+          {(router.pathname != "/") ? (<></>) : ( <>
             {menuItems.map(({ path, label }, i) => (
               <Link
                 activeClass="active"
@@ -47,24 +50,27 @@ export default function Header({ className }) {
                 key={i}
               >
                 {label}
-              </Link>
-              
+              </Link>   
             ))}
+          </>)}
 
-          {additionLinks.map(({ path, label }, i) => (
-              <a href={path} key={i} style={styles.additionalLinksStyles}>
-                {label}
-              </a>
-            ))}
+          
+          {/* Render button only if pathname is not /product */}
+          {router.pathname != "/product" && <a href={!user ? "/signup" : "/product"} > 
+              <Button
+                className="donate__btn"
+                variant="secondary"
+                aria-label="Get Started"
+              >
+                {!user ? "Get Started" : "New Talk!"}
+              </Button>
+            </a>}
+            
 
           {/* Conditional rendering to check if user is logged in */}
           { user && (
             <>
-              <div>
-                <span>{user.email}</span>
-                <button onClick={handleClick}>Log out</button>
-              </div>  
-
+              {router.pathname != "/dashboard" && 
               <a href="/dashboard"> 
                 <Button
                   className="donate__btn"
@@ -73,44 +79,31 @@ export default function Header({ className }) {
                 >
                   Dashboard
                 </Button>
-              </a> 
+              </a> }
+              
+
+              <span>Logged in with: {user.email}</span>
+              <button onClick={handleClick} style={styles.logoutButton}>Log out</button>
             </>
           )}
 
+          {/*  */}
           { !user && (
             <>
-              <a href="/signup">
-                Signup
+              {additionLinks.map(({ path, label }, i) => (
+              <a href={path} key={i} style={styles.additionalLinksStyles}>
+                {label}
               </a>
-              <a href="/login">
-                Login
-              </a>
+            ))}
+
+            
             </>
           )}
 
-          
-          <a href="/product" > 
-            <Button
-              className="donate__btn"
-              variant="secondary"
-              aria-label="Get Started"
-            >
-              Get Started
-            </Button>
-          </a> 
-          
-
-          
 
           </Flex>
 
-          
-
-          
-          
-
           <MobileDrawer />
-          </>)}
         </Container>
       </header>
     </DrawerProvider>
@@ -171,7 +164,9 @@ const styles = {
 
   nav: {
     mx: 'auto',
+    marginRight: '0px',
     display: 'none',
+    float: 'right', 
     color: 'inherit',
     '@media screen and (min-width: 1220px)': {
       display: 'block',
@@ -199,5 +194,14 @@ const styles = {
     color: 'inherit'
   },
 
+  logoutButton: {
+    marginLeft: '10px',
+    background: 'transparent',
+    border: 'solid 1px #EA3A60',
+    borderRadius: '4px', 
+    color: '#EA3A60',
+    padding: '5px',
+    cursor: 'poiner'
+  }
   
 };

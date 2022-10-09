@@ -18,10 +18,10 @@ export const menuItems = [
 ];
 
 export const additionLinks = [
-  {
-    path: '/signup',
-    label: 'Sign up'
-  },
+  // {
+  //   path: '/signup',
+  //   label: 'Sign up'
+  // },
 
   {
     path: '/login',
