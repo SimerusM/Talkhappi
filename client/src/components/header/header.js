@@ -50,6 +50,9 @@ export default function Header({ className }) {
               </a>
             ))}
 
+          <div>
+            <button onClick={handleClick}>Log out</button>
+          </div>  
 
           <a href="/product" > 
             <Button
