@@ -10,10 +10,16 @@ import MobileDrawer from './mobile-drawer';
 import menuItems from './header.data';
 import { useRouter } from 'next/router'
 
+import { useLogout } from 'hooks/useLogout';
 
 
 export default function Header({ className }) {
   const router = useRouter()
+
+  const { logout } = useLogout()
+  const handleClick = () => {
+    logout()
+  }
   return (
     <DrawerProvider>
       <header sx={styles.header} className={className} id="header">
@@ -39,6 +45,10 @@ export default function Header({ className }) {
 
         
           </Flex>
+
+          <div>
+            <button onClick={handleClick}>Log out</button>
+          </div>
 
           <a href="/signup"> 
             Sign up

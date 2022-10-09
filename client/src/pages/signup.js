@@ -14,7 +14,7 @@ const SignupPage = () => {
         <ThemeProvider theme={theme}>
             <StickyProvider>
             <Layout>
-                <SEO title="Talkhappi - Sign Up" />
+                <SEO title="Sign up" />
                 <Signup />
             </Layout>
             </StickyProvider>
