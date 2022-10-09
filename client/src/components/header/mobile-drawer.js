@@ -5,14 +5,14 @@ import Drawer from 'components/drawer';
 import { DrawerContext } from '../../contexts/drawer/drawer.context';
 import { IoMdClose, IoMdMenu } from 'react-icons/io';
 import { Link } from 'react-scroll';
+import { jsx, Container, Flex, Button } from 'theme-ui';
 import {
   FaFacebookF,
   FaTwitter,
   FaGithubAlt,
   FaDribbble,
 } from 'react-icons/fa';
-import menuItems from './header.data';
-
+import {menuItems, additionLinks} from './header.data';
 const social = [
   {
     path: '/',
@@ -72,6 +72,34 @@ const MobileDrawer = () => {
                 {label}
               </Link>
             ))}
+
+            
+            {additionLinks.map(({ path, label }, i) => (
+              <a href={path} key={i}>
+                {label}
+              </a>
+            ))} 
+
+          <a href="/product" > 
+            <Button
+              className="donate__btn"
+              variant="secondary"
+              aria-label="Get Started"
+            >
+              Get Started
+            </Button>
+          </a> 
+
+          <a href="/dashboard"> 
+            <Button
+              className="donate__btn"
+              variant="secondary"
+              aria-label="dashboard"
+            >
+              Dashboard
+            </Button>
+          </a> 
+            
           </Box>
 
           <Box sx={styles.menuFooter}>
@@ -97,7 +125,7 @@ const styles = {
     flexShrink: '0',
     width: '26px',
 
-    '@media screen and (min-width: 1024px)': {
+    '@media screen and (min-width: 1220px)': {
       display: 'none',
     },
   },
@@ -134,6 +162,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     a: {
+      textDecoration: 'none',
       fontSize: '16px',
       fontWeight: '500',
       color: 'text_white',
@@ -195,6 +224,8 @@ const styles = {
     justifyContent: 'center',
     py: '0',
   },
+
+  
 };
 
 export default MobileDrawer;
