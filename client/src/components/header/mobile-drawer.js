@@ -230,6 +230,8 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     mt: 'auto',
+    marginTop: '20px',
+    
   },
 
   social: {
