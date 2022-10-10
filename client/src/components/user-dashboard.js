@@ -9,6 +9,7 @@ import ScorePopUpWin from './scorePopUpWin';
 
 // context
 import { useUserDataContext } from 'hooks/useUserDataContext';
+import { useAuthContext } from 'hooks/useAuthContext';
 
 const styles = {
     dashboardContainer: {
@@ -58,18 +59,27 @@ export default function UserDashboard() {
     const [popUpOpen, setPopUpOpen] = useState(-1);
 
     const { user_data, dispatch } = useUserDataContext()
+    const {user} = useAuthContext()
+
     useEffect(() => {
         const fetchUserData = async () => {
-        const response = await fetch('http://localhost:5000/api/userData/')
+        const response = await fetch('http://localhost:5000/api/userData/', {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
         const json = await response.json()
         
         // check if response is ok
         if (response.ok) (
             dispatch({type: 'SET_USERDATA', payload: json})
         )}
-    
-        fetchUserData()
-    }, [dispatch])
+        
+        if (user) {
+            fetchUserData()
+        }
+        
+    }, [dispatch, user])
 
     return (
         <div style={styles.dashboardContainer}>

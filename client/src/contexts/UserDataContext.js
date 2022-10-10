@@ -11,7 +11,7 @@ export const userDataReducer = (state, action) => {
             }
         case 'CREATE_USERDATA':
             return {
-                user_data: [action.payload, ...state.user_data]
+                user_data: [action.payload]
             }
         case 'DELETE_USERDATA':
             return {

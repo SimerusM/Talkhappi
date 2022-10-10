@@ -2,17 +2,25 @@ import { useState } from "react"
 
 // import context
 import { useUserDataContext } from 'hooks/useUserDataContext';
+import { useAuthContext } from "hooks/useAuthContext";
 
 const AddUserData = ({ userData }) => {
     // Hook to fetch user data upon load
     const { dispatch } = useUserDataContext()
+    const { user } = useAuthContext()
 
     const handleAdd = async () => {
+        if (!user) {
+            console.log('You must be logged in')
+            return
+        }
+
         const response = await fetch('http://localhost:5000/api/userData/', {
             method: 'POST',
             body: JSON.stringify(userData),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()

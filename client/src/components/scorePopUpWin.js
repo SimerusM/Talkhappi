@@ -1,6 +1,7 @@
-
 import React, { Component, useEffect, useState } from 'react';
 import { BsXCircle } from "react-icons/bs";
+import { useUserDataContext } from 'hooks/useUserDataContext';
+import { useAuthContext } from 'hooks/useAuthContext';
 
 
 const styles = {
@@ -34,8 +35,28 @@ const styles = {
 }
 
 
-export default function ScorePopUpWin ({ callback , list_id}) {
-    
+export default function ScorePopUpWin ({ callback , list_id }) {
+    const { dispatch } = useUserDataContext()
+    const { user } = useAuthContext()
+    console.log(callback, list_id)
+
+    const handleDelete = async () => {
+        if (!user) {
+            return
+        }
+
+        const response = await fetch('http://localhost:5000/api/userData/' + list_id._id, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+        const json = await response.json()
+
+        if (response.ok) {
+            dispatch({type: 'DELETE_USERDATA', payload: json})
+        }
+    }
 
     return (
         <div style={styles.popUpBoxContainer}>
@@ -46,7 +67,7 @@ export default function ScorePopUpWin ({ callback , list_id}) {
                 <p>Transcript: {list_id.scores}</p>
 
                 <p>Date: {list_id.createdAt}</p>
-                <button>Delete</button>
+                <button onClick={handleDelete}>Delete</button>
             </div>
         </div>
     )
