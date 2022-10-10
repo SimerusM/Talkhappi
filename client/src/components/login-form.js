@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useLogin } from 'hooks/useLogin'
 import Background from 'assets/login-background.png'
-
+import { useRouter } from 'next/router'
 
 const styles = {
     Container: {
@@ -79,12 +79,15 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {login, error, isLoading} = useLogin()
+    const router = useRouter()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         console.log(email, password)
         await login(email, password)
+
+        await router.push("/")
     }
 
     return (

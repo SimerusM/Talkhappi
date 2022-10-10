@@ -13,6 +13,13 @@ import {
   FaDribbble,
 } from 'react-icons/fa';
 import {menuItems, additionLinks} from './header.data';
+
+import { useLogout } from 'hooks/useLogout';
+import { useAuthContext } from 'hooks/useAuthContext';
+import { useRouter } from 'next/router'
+
+
+
 const social = [
   {
     path: '/',
@@ -33,6 +40,18 @@ const social = [
 ];
 
 const MobileDrawer = () => {
+  const router = useRouter()
+  // logout hook
+  const { logout } = useLogout()
+
+  // global user state
+  const { user } = useAuthContext()
+
+  // logs user out upon click
+  const handleClick = () => {
+    logout()
+  }
+
   const { state, dispatch } = useContext(DrawerContext);
 
   // Toggle drawer
@@ -58,7 +77,12 @@ const MobileDrawer = () => {
     >
       <Scrollbars autoHide>
         <Box sx={styles.content}>
+
+          <a href="/" style={styles.logoLink}><p style={styles.logoText}>TALKHAPPI</p></a>
+
           <Box sx={styles.menu}>
+          
+          {(router.pathname != "/") ? (<></>) : ( <>
             {menuItems.map(({ path, label }, i) => (
               <Link
                 activeClass="active"
@@ -72,33 +96,54 @@ const MobileDrawer = () => {
                 {label}
               </Link>
             ))}
+            </>)}
 
+              {/*  */}
+              {!user && (
+                <>
+                  {additionLinks.map(({ path, label }, i) => (
+                  <a href={path} key={i} style={styles.additionalLinksStyles}>
+                    {label}
+                  </a>
+                ))}
+                </>
+              )}
+
+        
+            {/* Render button only if pathname is not /product */}
+            {router.pathname != "/product" && <a href={!user ? "/signup" : "/product"} > 
+              <Button
+                className="donate__btn"
+                variant="secondary"
+                aria-label="Get Started"
+              >
+                {!user ? "Get Started" : "New Talk!"}
+              </Button>
+            </a>}
+
+
+            {/* Conditional rendering to check if user is logged in */}
+            { user && (
+              <>
+                {router.pathname != "/dashboard" && 
+                <a href="/dashboard"> 
+                  <Button
+                    className="donate__btn"
+                    variant="secondary"
+                    aria-label="dashboard"
+                  >
+                    Dashboard
+                  </Button>
+                </a> }
+                
+
+                {/* <span>Logged in with: {user.email}</span> */}
+                <button onClick={handleClick} style={styles.logoutButton}>Log out: {user.email}</button>
+              </>
+            )}
             
-            {additionLinks.map(({ path, label }, i) => (
-              <a href={path} key={i}>
-                {label}
-              </a>
-            ))} 
+            
 
-          <a href="/product" > 
-            <Button
-              className="donate__btn"
-              variant="secondary"
-              aria-label="Get Started"
-            >
-              Get Started
-            </Button>
-          </a> 
-
-          <a href="/dashboard"> 
-            <Button
-              className="donate__btn"
-              variant="secondary"
-              aria-label="dashboard"
-            >
-              Dashboard
-            </Button>
-          </a> 
             
           </Box>
 
@@ -225,6 +270,25 @@ const styles = {
     py: '0',
   },
 
+  logoutButton: {
+    marginTop: '20px',
+    marginLeft: '10px',
+    background: 'transparent',
+    border: 'solid 1px #9B9FA5',
+    borderRadius: '4px', 
+    color: '#9B9FA5',
+    padding: '5px',
+    cursor: 'poiner'
+  },
+
+  logoText: {
+    fontSize: '24px',
+  },
+
+  logoLink: {
+    textDecoration: 'none',
+    color: '#000'
+  },
   
 };
 

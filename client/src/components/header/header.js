@@ -82,8 +82,8 @@ export default function Header({ className }) {
               </a> }
               
 
-              <span>Logged in with: {user.email}</span>
-              <button onClick={handleClick} style={styles.logoutButton}>Log out</button>
+              {/* <span>Logged in with: {user.email}</span> */}
+              <button onClick={handleClick} style={styles.logoutButton}>Log out: {user.email}</button>
             </>
           )}
 
@@ -129,7 +129,10 @@ const styles = {
     fontWeight: 'body',
     py: 4,
     width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
     position: 'absolute',
+    flexWrap: 'nowrap',
     top: 0,
     left: 0,
     backgroundColor: 'transparent',
@@ -156,6 +159,11 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginRight: '0px',
+    marginLeft: '0px',
+    left: 0,
+    right: 0,
+    width: '100%'
   },
 
   additionalLinksStyles: {
@@ -168,6 +176,7 @@ const styles = {
     display: 'none',
     float: 'right', 
     color: 'inherit',
+    whiteSpace: 'nowrap',
     '@media screen and (min-width: 1220px)': {
       display: 'block',
     },
@@ -197,9 +206,9 @@ const styles = {
   logoutButton: {
     marginLeft: '10px',
     background: 'transparent',
-    border: 'solid 1px #EA3A60',
+    border: 'solid 1px #9B9FA5',
     borderRadius: '4px', 
-    color: '#EA3A60',
+    color: '#9B9FA5',
     padding: '5px',
     cursor: 'poiner'
   }
