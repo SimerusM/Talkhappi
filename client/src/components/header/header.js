@@ -62,7 +62,7 @@ export default function Header({ className }) {
                 variant="secondary"
                 aria-label="Get Started"
               >
-                {!user ? "Get Started" : "New Talk!"}
+                {!user ? "Get Started" : "Start now"}
               </Button>
             </a>}
             

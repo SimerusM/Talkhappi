@@ -35,6 +35,7 @@ const styles = {
 
 
 export default function ScorePopUpWin ({ callback , list_id}) {
+    
 
     return (
         <div style={styles.popUpBoxContainer}>
@@ -45,6 +46,7 @@ export default function ScorePopUpWin ({ callback , list_id}) {
                 <p>Transcript: {list_id.scores}</p>
 
                 <p>Date: {list_id.createdAt}</p>
+                <button>Delete</button>
             </div>
         </div>
     )

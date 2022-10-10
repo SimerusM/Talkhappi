@@ -7,13 +7,13 @@ const {
     updateUserData
 } = require('../controllers/userDataController')
 
+// require auth for all workout routes
+const requireAuth = require('../middleware/requireAuth')
+
 // create instance of express router
 const router = express.Router()
 
-// Receive transcript endpoint
-
-
-// CRUD operations
+router.use(requireAuth)
 
 // GET all user data
 router.get('/', getAllUserData)
