@@ -24,13 +24,46 @@ const styles = {
         width: '50%',
         minHeight: '50vh',
         maxHeight: '50vh',
+        minWidth: '300px',
         backgroundColor: '#fff',
         border: '1px solid #999',
         borderRadius: '10px',
         zIndex: '3',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        
        
 
-    }
+    },
+
+    contentContainer: {
+        width: '80%'
+    },
+
+    closeBtnContainer: {
+        width: '90%',
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+
+    transcriptContainer: {
+        backgroundColor: '#EA3A60',
+        padding: '10px',
+        borderRadius: '5px',
+        minHeight: '140px',
+        color: '#fff'
+    },
+
+    title: {
+        fontSize: '18px'
+    },
+
+    textContent: {
+        textAlign: 'center',
+        fontSize: '18px'
+    },
 
 }
 
@@ -61,18 +94,20 @@ export default function ScorePopUpWin ({ callback , list_id }) {
     return (
         <div style={styles.popUpBoxContainer}>
             <div style={styles.popUpBox}>
-            {console.log(list_id)}
-
-                    <div>
-                        {console.log(list_id)}
-                        <BsXCircle size="1.5em" color='#EA3A60' onClick={callback}/>
-                        <p>Score: {list_id.transcript}</p>
-                        <p>Transcript: {list_id.scores}</p>
-
-                        <p>Date: {list_id.createdAt}</p>
-                        {/* <button onClick={handleDelete}>Delete</button> */}
-                    </div>
-
+                {console.log(list_id)}
+                <div style={styles.closeBtnContainer}>
+                    <BsXCircle size="1.5em" color='#EA3A60' onClick={callback}/>
+                </div>
+                
+                <div style={styles.contentContainer}>
+                    <p style={styles.title}>Score: </p>
+                    <p style={styles.textContent}>{list_id.scores}</p>
+                    <p style={styles.title}>Transcript: </p>
+                    <div style={styles.transcriptContainer}>{list_id.transcript}</div>
+                    <p style={styles.title} >Date: {list_id.createdAt}</p>
+                </div>
+                
+                {/* <button onClick={handleDelete}>Delete</button> */}
             </div>
         </div>
     )
