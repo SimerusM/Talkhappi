@@ -40,34 +40,39 @@ export default function ScorePopUpWin ({ callback , list_id }) {
     const { user } = useAuthContext()
     console.log(callback, list_id)
 
-    const handleDelete = async () => {
-        if (!user) {
-            return
-        }
+    // const handleDelete = async () => {
+    //     if (!user) {
+    //         return
+    //     }
 
-        const response = await fetch('http://localhost:5000/api/userData/' + list_id._id, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
-        const json = await response.json()
+    //     const response = await fetch('http://localhost:5000/api/userData/' + list_id._id, {
+    //         method: 'DELETE',
+    //         headers: {
+    //             'Authorization': `Bearer ${user.token}`
+    //         }
+    //     })
+    //     const json = await response.json()
 
-        if (response.ok) {
-            dispatch({type: 'DELETE_USERDATA', payload: json})
-        }
-    }
+    //     if (response.ok) {
+    //         dispatch({type: 'DELETE_USERDATA', payload: json})
+    //     }
+    // }
 
     return (
         <div style={styles.popUpBoxContainer}>
             <div style={styles.popUpBox}>
-                {console.log(list_id)}
-                <BsXCircle size="1.5em" color='#EA3A60' onClick={callback}/>
-                <p>Score: {list_id.transcript}</p>
-                <p>Transcript: {list_id.scores}</p>
+            {console.log(list_id)}
 
-                <p>Date: {list_id.createdAt}</p>
-                <button onClick={handleDelete}>Delete</button>
+                    <div>
+                        {console.log(list_id)}
+                        <BsXCircle size="1.5em" color='#EA3A60' onClick={callback}/>
+                        <p>Score: {list_id.transcript}</p>
+                        <p>Transcript: {list_id.scores}</p>
+
+                        <p>Date: {list_id.createdAt}</p>
+                        {/* <button onClick={handleDelete}>Delete</button> */}
+                    </div>
+
             </div>
         </div>
     )

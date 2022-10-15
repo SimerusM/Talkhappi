@@ -94,7 +94,7 @@ export default function UserDashboard() {
             <div style={styles.DashboardBoxContainer}>
 
                 <DashboardNewBox/>
- 
+
                 {user_data && user_data.map((userData, index) => {
                 return (
                     <DashboardTalkBox key={userData._id} callback={(id) => {setPopUpOpen(id); console.log(id)}} list_id={index} score={userData.scores}/>

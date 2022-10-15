@@ -16,17 +16,21 @@ const styles = {
     }
 }
 
-export default function DashboardTalkBox({ callback , list_id, score}) {
+
+export default function DashboardTalkBox({ callback, list_id, score}) {
 
     const onClick = () => {
         callback(list_id);
-      }
+    }
 
 
     return (
-        <div style={styles.BoxContainer} onClick={onClick}>
-            <BsArrowCounterclockwise size="2em" color='#EA3A60'/>
-            <div> score:  <br/>{score}</div>
+        <div style={styles.BoxContainer} >
+            <div onClick={onClick}>
+                <BsArrowCounterclockwise size="2em" color='#EA3A60'/>
+                <div> score:  <br/>{score}</div>
+            </div>
         </div>
+        
     );
 }

@@ -10,7 +10,9 @@ const mongoose = require('mongoose')
 
 // get all user data
 const getAllUserData = async (req, res) => {
-    const all_user_data = await UserData.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+
+    const all_user_data = await UserData.find({ user_id }).sort({createdAt: -1})
     console.log(all_user_data)
     res.status(200).json(all_user_data)
 }
@@ -39,11 +41,13 @@ const getUserData = async (req, res) => {
 // create new user data
 const createUserData = async (req, res) => {
     const {id, scores, transcript} = req.body
-    
+    const user_id = req.user._id
+    console.log(user_id)
     const newUserData = new UserData({
         id: id,
         scores: scores,
-        transcript: transcript
+        transcript: transcript,
+        user_id: user_id
     })
 
     // add doc to db
