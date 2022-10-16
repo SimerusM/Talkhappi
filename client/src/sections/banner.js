@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import { Container, Box, Heading, Text, Image, Button } from 'theme-ui';
-import BannerImg from 'assets/banner-thumb.png';
+import BannerImg from 'assets/blog/t.jpg';
 import ShapeLeft from 'assets/shape-left.png';
 import ShapeRight from 'assets/shape-right.png';
 import Link from 'next/link';
@@ -11,7 +11,7 @@ export default function Banner() {
     <section sx={styles.banner} id="home">
       <Container sx={styles.banner.container}>
         <Box sx={styles.banner.contentBox}>
-          <Heading as="h1" variant="heroPrimary">
+          <Heading as="h2" variant="heroPrimary">
             Changing Mental Wellness
           </Heading>
           <Text as="p" variant="heroSecondary">

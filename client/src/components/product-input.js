@@ -94,6 +94,8 @@ export default function ProductInput() {
   const [id, setId] = useState('123456')
   const [scores, setScores] = useState('182347')
   
+  let dataReceived = false
+
 
   const handleAdd = async (e) => {
 
@@ -125,7 +127,7 @@ export default function ProductInput() {
           console.log(feedback)
           console.log(score)
           console.log('Data added')
-
+          dataReceived = true
       }
     }
 
@@ -155,13 +157,12 @@ export default function ProductInput() {
 
           <button onClick={SpeechRecognition.stopListening}>Stop</button>
           <button onClick={resetTranscript}>Reset</button>
-          
 
-          <h1>hi</h1>
-          <button onClick={() => console.log(userData)}>Debug backendData</button>
           
           {/* Submit button  */}
+          
           <button onClick={() => handleAdd()}>Send data</button>
+
 
           
       </div>

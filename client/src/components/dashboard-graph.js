@@ -11,7 +11,7 @@ export default function DashboardGraph() {
         labels: ["May", "June", "July", "August"],
         datasets: [
             {
-                data: [1, 6, 3, 0, 5, 6, 7],
+                data: [1, 4, 2.5, 10, 10, 6, 10],
                 backgroundColor: "#000000",
                 borderColor: '#EA3A60',
                 // pointBorderColor: '#2ABDF3',

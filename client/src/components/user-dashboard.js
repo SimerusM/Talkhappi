@@ -17,7 +17,7 @@ const styles = {
         justifyContent: 'center',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: '#f799ae',
+        backgroundColor: '#ffffff',
         
         
         transition: 'all 0.15s',

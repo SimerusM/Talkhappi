@@ -15,15 +15,15 @@ const styles = {
         left: '0',
         top: '0',
         width: '100%',
-        height: '100vh',
+        height: '100%',
         
     },
     
     popUpBox: {
         position: 'relative',
         width: '50%',
-        minHeight: '50vh',
-        maxHeight: '50vh',
+        minHeight: 'auto',
+        maxHeight: 'auto',
         minWidth: '300px',
         backgroundColor: '#fff',
         border: '1px solid #999',
@@ -36,6 +36,15 @@ const styles = {
         
        
 
+    },
+
+    feedbackContainer: {
+        width: '100%',
+        backgroundColor: '#EA3A60',
+        padding: '10px',
+        borderRadius: '5px',
+        minHeight: '140px',
+        color: '#fff'
     },
 
     contentContainer: {
@@ -73,23 +82,23 @@ export default function ScorePopUpWin ({ callback , list_id }) {
     const { user } = useAuthContext()
     console.log(callback, list_id)
 
-    // const handleDelete = async () => {
-    //     if (!user) {
-    //         return
-    //     }
+    const handleDelete = async () => {
+        if (!user) {
+            return
+        }
 
-    //     const response = await fetch('http://localhost:5000/api/userData/' + list_id._id, {
-    //         method: 'DELETE',
-    //         headers: {
-    //             'Authorization': `Bearer ${user.token}`
-    //         }
-    //     })
-    //     const json = await response.json()
+        const response = await fetch('http://localhost:5000/api/userData/' + list_id._id, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+        const json = await response.json()
 
-    //     if (response.ok) {
-    //         dispatch({type: 'DELETE_USERDATA', payload: json})
-    //     }
-    // }
+        if (response.ok) {
+            dispatch({type: 'DELETE_USERDATA', payload: json})
+        }
+    }
 
     return (
         <div style={styles.popUpBoxContainer}>
@@ -104,10 +113,12 @@ export default function ScorePopUpWin ({ callback , list_id }) {
                     <p style={styles.textContent}>{list_id.scores}</p>
                     <p style={styles.title}>Transcript: </p>
                     <div style={styles.transcriptContainer}>{list_id.transcript}</div>
+                    <p style={styles.title}>Feedback: </p>
+                    <textarea style={styles.feedbackContainer}>{list_id.feedback}</textarea>
                     <p style={styles.title} >Date: {list_id.createdAt}</p>
                 </div>
                 
-                {/* <button onClick={handleDelete}>Delete</button> */}
+                <button onClick={handleDelete}>Delete</button>
             </div>
         </div>
     )
