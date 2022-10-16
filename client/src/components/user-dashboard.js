@@ -37,7 +37,7 @@ const styles = {
         marginBottom: '50px',
         flexWrap: 'wrap',
         alignItems: 'center',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
       
 
     },

@@ -37,19 +37,38 @@ const getUserData = async (req, res) => {
     res.status(200).json(user_data)
 }
 
-
+const { Configuration, OpenAIApi } = require("openai");
 // create new user data
 const createUserData = async (req, res) => {
     const {id, scores, transcript} = req.body
     const user_id = req.user._id
-    console.log(user_id)
+
+    const configuration = new Configuration({
+        apiKey: process.env.OPENAI_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
+
+    const response = await openai.createCompletion({
+        model: "text-davinci-002",
+        prompt: "Provide personal feedback for me and give me tips: " + transcript,
+        temperature: 1,
+        max_tokens: 200,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+    });
+
+    console.log(response.data.choices[0].text)
+
     const newUserData = new UserData({
         id: id,
         scores: scores,
         transcript: transcript,
-        user_id: user_id
+        user_id: user_id,
+        feedback: response.data.choices[0].text
     })
 
+    console.log(newUserData)
     // add doc to db
     try {
         await newUserData.save()
@@ -58,8 +77,10 @@ const createUserData = async (req, res) => {
     }
 
     console.log('POST:', newUserData)
-    return res.status(201).json({user_data: newUserData})
+    return res.status(201).json({user_data: newUserData, feedback: response.data.choices[0].text})
 }
+
+
 
 // delete user data
 const deleteUserData = async (req, res) => {

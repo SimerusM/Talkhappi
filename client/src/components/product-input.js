@@ -119,7 +119,9 @@ export default function ProductInput() {
       }
       if (response.ok) {
           // dispatching add user data context to update global user_data state
-          dispatch({type: 'CREATE_USERDATA', payload: json})
+          dispatch({type: 'CREATE_USERDATA', payload: json.userData})
+          const feedback = json.feedback
+          console.log(feedback)
           console.log('Data added')
       }
     }
@@ -157,6 +159,8 @@ export default function ProductInput() {
           
           {/* Submit button  */}
           <button onClick={() => handleAdd()}>Send data</button>
+
+          
       </div>
   );
 }

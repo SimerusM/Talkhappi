@@ -15,6 +15,9 @@ const userDataSchema = new Schema({
     user_id: {
         type: String,
         required: true
+    },
+    feedback: {
+        type: String
     }
 
 }, { timestamps: true })
