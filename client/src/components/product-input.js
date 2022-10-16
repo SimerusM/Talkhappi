@@ -121,8 +121,11 @@ export default function ProductInput() {
           // dispatching add user data context to update global user_data state
           dispatch({type: 'CREATE_USERDATA', payload: json.userData})
           const feedback = json.feedback
+          const score = json.score
           console.log(feedback)
+          console.log(score)
           console.log('Data added')
+
       }
     }
 

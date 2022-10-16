@@ -48,6 +48,7 @@ const createUserData = async (req, res) => {
     });
     const openai = new OpenAIApi(configuration);
 
+    // feedback
     const response = await openai.createCompletion({
         model: "text-davinci-002",
         prompt: "Provide personal feedback for me and give me tips: " + transcript,
@@ -58,11 +59,23 @@ const createUserData = async (req, res) => {
         presence_penalty: 0,
     });
 
-    console.log(response.data.choices[0].text)
+    // score
+    const response2 = await openai.createCompletion({
+        model: "text-davinci-002",
+        prompt: "Give this text a number from 1-100 in terms of positivity: " + transcript,
+        temperature: 1,
+        max_tokens: 100,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+    });
+
+    // console.log(response.data.choices[0].text)
+    // console.log(response2.data.choices)
 
     const newUserData = new UserData({
-        id: id,
-        scores: scores,
+        id: 'user',
+        scores: response2.data.choices[0].text,
         transcript: transcript,
         user_id: user_id,
         feedback: response.data.choices[0].text
@@ -77,7 +90,7 @@ const createUserData = async (req, res) => {
     }
 
     console.log('POST:', newUserData)
-    return res.status(201).json({user_data: newUserData, feedback: response.data.choices[0].text})
+    return res.status(201).json({user_data: newUserData, feedback: response.data.choices[0].text, score: response2.data.choices[0].text})
 }
 
 
