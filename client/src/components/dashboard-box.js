@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { BsArrowCounterclockwise } from "react-icons/bs";
+import { BsInfoSquare } from "react-icons/bs";
 
 const styles = {
     BoxContainer: {
@@ -27,8 +27,8 @@ export default function DashboardTalkBox({ callback, list_id, score}) {
     return (
         <div style={styles.BoxContainer} >
             <div onClick={onClick}>
-                <BsArrowCounterclockwise size="2em" color='#EA3A60'/>
-                <div> score:  <br/>{score}</div>
+                <BsInfoSquare size="2em" color='#EA3A60'/>
+                <div> Score:  <br/>{score}</div>
             </div>
         </div>
         

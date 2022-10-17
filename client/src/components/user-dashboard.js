@@ -87,7 +87,7 @@ export default function UserDashboard() {
             {(popUpOpen != -1) && <ScorePopUpWin callback={() => {setPopUpOpen(-1)}} list_id={user_data[popUpOpen]}/>}
 
             <div style={styles.GraphContainer}>
-                <DashboardGraph/>
+                <DashboardGraph userDataList={user_data} />
             </div>
             
             

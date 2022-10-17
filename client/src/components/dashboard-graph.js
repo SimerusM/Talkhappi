@@ -6,12 +6,16 @@ ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement)
 
 
 
-export default function DashboardGraph() {
+export default function DashboardGraph({ userDataList }) {
+    const userScores = []
+    userDataList && userDataList.forEach((userData) => {userScores.push(userData.scores)})
+
     const data = {
-        labels: ["May", "June", "July", "August"],
+        labels: [...Array(userDataList ? userDataList.length : 0 ).keys()],
+
         datasets: [
             {
-                data: [1, 4, 2.5, 10, 10, 6, 10],
+                data: userScores,
                 backgroundColor: "#000000",
                 borderColor: '#EA3A60',
                 // pointBorderColor: '#2ABDF3',
@@ -26,15 +30,18 @@ export default function DashboardGraph() {
         plugin: {
             legend: false,
             autocolors: false,
+            
         },
         scales: {
             x: {
                 display: false
             },
             y: {
+                display: true,
+                min: 0,
+                max:  100,
                 ticks: {
-                    // stepSize: 2,
-                    callback: (value) => value
+                    beginAtZero: true,
                 },
                 grid: {
                     borderDash: [10]
@@ -44,6 +51,7 @@ export default function DashboardGraph() {
     };
     return (
     <div>
+        
         <Line data={data} options={options}></Line>
     </div>
     )

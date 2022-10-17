@@ -11,32 +11,7 @@ import UserDataDetails from './user-data-details.js';
 import AddUserData from './add-user-data.js';
 
 const styles = {
-    card: {
-      display: 'flex',
-      alignItems: 'center',
-      flexDirection: 'column',
-      py: [0, null, 4, 5, 6],
-      px: [2, null, 6, 7],
-      transition: 'ease-in-out 0.4s',
-      borderRadius: '8px',
-      position: 'relative',
-      '&:hover': {
-        boxShadow: ['none', null, '0 4px 10px rgba(39, 83, 123, 0.12)'],
-        '.info__name': {
-          color: 'primary',
-        },
-        '.info__designation': {
-          color: 'primary',
-        },
-        '.social__share': {
-          opacity: 1,
-          a: {
-            my: 0,
-            py: [0, null, 1],
-          },
-        },
-      },
-    },
+
     container: {
         height: 'auto',
         display: 'flex',
@@ -52,6 +27,9 @@ const styles = {
         backgroundColor: '#EA3A60',
         padding: '10px',
         fontSize: '30px',
+        boxShadow: 'rgba(234,58,96, 0.4) 5px 5px',
+        border: 'solid 2px #000'
+
     },
     speechTitle: {
         marginTop: '5em',
@@ -64,13 +42,29 @@ const styles = {
     },
     speechButtonContainer: {
         width: '80%',
-        border: '',
 
     },
-    speechButton: {
-        display: 'flex',
-        justifyContent: 'center',
-        width: '50%'
+
+    btsContainer: {
+      display: 'flex',
+      width: '80%',
+      justifyContent: 'center',
+      boxShadow: 'rgba(234,58,96, 0.4) 5px 5px',
+    },
+
+    editButtons: {
+      paddingTop: '30px',
+      paddingBottom: '30px',
+
+    },
+
+    submitButton: {
+      marginTop: '20px',
+      width: '80%',
+      paddingTop: '30px',
+      paddingBottom: '30px',
+      boxShadow: 'rgba(234,58,96, 0.4) 5px 5px',
+      fontSize: '1.2rem',
     },
 
   };
@@ -148,20 +142,22 @@ export default function ProductInput() {
             {transcript}
           </div>
           <p>Microphone: {listening ? 'on' : 'off'}</p>
-          <button onClick={() => SpeechRecognition.startListening({
-            continuous: true,
-            language: 'en-US'
-          })}>
-            Start
-          </button>
 
-          <button onClick={SpeechRecognition.stopListening}>Stop</button>
-          <button onClick={resetTranscript}>Reset</button>
+          <div style={styles.btsContainer} className="btsContainer"> 
+            <button style={styles.editButtons} onClick={() => SpeechRecognition.startListening({
+              continuous: true,
+              language: 'en-US'
+            })}>
+              Start
+            </button>
 
+            <button style={styles.editButtons} onClick={SpeechRecognition.stopListening}>Stop</button>
+            <button style={styles.editButtons} onClick={resetTranscript}>Reset</button>
+          </div>
           
           {/* Submit button  */}
           
-          <button onClick={() => handleAdd()}>Send data</button>
+          <button style={styles.submitButton} className="submitButton" onClick={() => handleAdd()}>Send data</button>
 
 
           
