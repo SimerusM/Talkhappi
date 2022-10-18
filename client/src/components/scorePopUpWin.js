@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React from 'react';
 import { BsXCircle } from "react-icons/bs";
 import { useUserDataContext } from 'hooks/useUserDataContext';
 import { useAuthContext } from 'hooks/useAuthContext';

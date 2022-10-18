@@ -6,6 +6,8 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 // import context
 import { useUserDataContext } from 'hooks/useUserDataContext';
 
+import ResultsPopUpWin from './resultsPopUpWin.js';
+
 // import components
 import UserDataDetails from './user-data-details.js';
 import AddUserData from './add-user-data.js';
@@ -50,11 +52,14 @@ const styles = {
       width: '80%',
       justifyContent: 'center',
       boxShadow: 'rgba(234,58,96, 0.4) 5px 5px',
+      border: 'none'
     },
 
     editButtons: {
       paddingTop: '30px',
       paddingBottom: '30px',
+      border: 'solid 0.1px #000',
+
 
     },
 
@@ -65,11 +70,14 @@ const styles = {
       paddingBottom: '30px',
       boxShadow: 'rgba(234,58,96, 0.4) 5px 5px',
       fontSize: '1.2rem',
+      border: 'solid 0.1px #000',
+
     },
 
   };
 
 import { useAuthContext } from "hooks/useAuthContext";
+import ScorePopUpWin from './scorePopUpWin.js';
 
 export default function ProductInput() {
   // Import variables from speech recognition hook
@@ -82,19 +90,19 @@ export default function ProductInput() {
   } = useSpeechRecognition();
 
 
-  const { dispatch } = useUserDataContext()
+  const { user_data, dispatch } = useUserDataContext()
   const { user } = useAuthContext()
   // testing
   const [id, setId] = useState('123456')
   const [scores, setScores] = useState('182347')
-  
-  let dataReceived = false
+  const [popUpOpen, setpopUpOpen] = useState(false)
+  const [dataReceived, setDataReceived] = useState(false)
 
 
   const handleAdd = async (e) => {
 
-      const user_data = {id, scores, transcript}
-
+      const userData = {id, scores, transcript}
+      setpopUpOpen(true)
       if (!user) {
           console.log('You must be logged in')
           return
@@ -102,12 +110,13 @@ export default function ProductInput() {
 
       const response = await fetch('http://localhost:5000/api/userData/', {
           method: 'POST',
-          body: JSON.stringify(user_data),
+          body: JSON.stringify(userData),
           headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${user.token}`
           }
       })
+
       const json = await response.json()
 
       if (!response.ok) {
@@ -121,7 +130,7 @@ export default function ProductInput() {
           console.log(feedback)
           console.log(score)
           console.log('Data added')
-          dataReceived = true
+          setDataReceived(true)
       }
     }
 
@@ -137,6 +146,9 @@ export default function ProductInput() {
 
   return (
       <div style={styles.container}>
+
+          {popUpOpen && <ResultsPopUpWin callback={() => {setpopUpOpen(false)}} dataReceived={dataReceived} userData={dataReceived ? user_data : null}/>}
+
           <div style={styles.speechTitle}>Talk to us, tell us about your day...</div>
           <div style={styles.speechBox}>
             {transcript}
@@ -157,7 +169,7 @@ export default function ProductInput() {
           
           {/* Submit button  */}
           
-          <button style={styles.submitButton} className="submitButton" onClick={() => handleAdd()}>Send data</button>
+          <button style={styles.submitButton} className="submitButton" onClick={() => handleAdd()}>Submit</button>
 
 
           
