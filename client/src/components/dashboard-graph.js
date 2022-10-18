@@ -15,7 +15,7 @@ export default function DashboardGraph({ userDataList }) {
 
         datasets: [
             {
-                data: userScores,
+                data: userScores.reverse(),
                 backgroundColor: "#000000",
                 borderColor: '#EA3A60',
                 // pointBorderColor: '#2ABDF3',

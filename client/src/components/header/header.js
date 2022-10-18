@@ -24,6 +24,7 @@ export default function Header({ className }) {
 
   // logs user out upon click
   const handleClick = () => {
+    router.push("/")
     logout()
   }
 

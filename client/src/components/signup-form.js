@@ -86,7 +86,7 @@ const Signup = () => {
         console.log(email, password)
         await signup(email, password)
 
-        await error && router.push('/')
+        await !error && router.push('/')
     }
 
     return (
