@@ -1,8 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
-import { BsXCircle } from "react-icons/bs";
+import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
 import {Chart as ChartJs, Tooltip, Title, ArcElement, Legend} from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { m } from 'framer-motion';
 
 ChartJs.register(
     Tooltip, Title, ArcElement, Legend
@@ -27,7 +26,20 @@ const styles = {
     closeBtnContainer: {
         width: '90%',
         display: 'flex',
-        justifyContent: 'flex-end'
+        justifyContent: 'space-between'
+    },
+
+    arrowContainer: {
+        display: 'flex',
+        border: "solid 2px #EA3A60",
+        borderRadius: '20px',
+        padding: '5px',
+        paddingLeft: '10px',
+        paddingRight: '10px'
+    },
+
+    arrows: {
+        marginTop: "-2px"
     },
     
     popUpBox: {
@@ -128,21 +140,23 @@ function ResultsSection ( { UserData }) {
             data: [UserData[0], (100-UserData[0])],
             backgroundColor:[
               'red',
-              '#FF9BB2'
+              '#d1b5bb'
             ]
         },
       ],
 
       labels: [
-        'Score'
+        'Score: ' + UserData[0],
     ], 
     };
+
+
 
 
     return (
         <div style={styles.resultsContainer}>
             <div style={styles.resultsBoxContainer} className="resultsBoxContainer">
-                <div style={styles.graphContainer} className="graphResult"><Doughnut data={data}/></div>
+                <div style={styles.graphContainer} className="graphResult"><Doughnut data={data} /></div>
                 <div style={styles.transcriptConatiner} className='scroll transcriptResult' >{UserData[2]}</div>
             </div>
 
@@ -161,7 +175,20 @@ export default function ResultsPopUpWin ({ callback , dataReceived, userData}) {
             <div style={styles.popUpBox} className="popUpWindow">
                 <div style={styles.itemsContainer}>   
                     <div style={styles.closeBtnContainer}>
-                        <BsXCircle size="1.5em" color='#EA3A60' onClick={callback}/>
+
+                        <div style={styles.arrowContainer} className="popUpArrowBtb" onClick={callback}>
+                            
+                            <BsArrowLeft style={styles.arrows} size="2em" color='#EA3A60' />
+                            <div>New Talk</div>
+                        </div>
+                        
+                        <a href="/dashboard" style={{textDecoration: 'none'}}>
+                            <div style={styles.arrowContainer} className="popUpArrowBtb">
+                                <div>Dashboard</div>
+                                <BsArrowRight style={styles.arrows} size="2em" color='#EA3A60'/>
+                            </div>
+                        </a>
+                        
                     </div>
 
                     {/* loading screen */}

@@ -72,7 +72,7 @@ const data = [
     imgSrc: Member3,
     altText: 'Wajih Salam Khan',
     title: 'Wajih Salam Khan',
-    designation: 'Front-end Developer',
+    designation: 'Chief Design Officer',
     socialProfile: [
       {
         id: 1,

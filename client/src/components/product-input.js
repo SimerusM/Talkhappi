@@ -102,6 +102,9 @@ export default function ProductInput() {
 
   const handleAdd = async (e) => {
 
+      if (transcript == "") {
+        return
+      }
       const userData = {id, scores, transcript}
       setpopUpOpen(true)
       if (!user) {
@@ -131,12 +134,11 @@ export default function ProductInput() {
           console.log(feedback)
           console.log(score)
           console.log('Data added')
-          await setCurrentData([score, feedback, userData.transcript])
-          resetTranscript
+          await setCurrentData([score, feedback, userData.transcript])          
           setDataReceived(true)
-
-          
       }
+
+      resetTranscript
     }
 
   // Handle browser support error

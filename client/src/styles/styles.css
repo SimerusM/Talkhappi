@@ -158,6 +158,12 @@
 
 /* Results Pop Up media */
 
+.popUpArrowBtb:hover {
+  background-color: #D84565;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
 .transcriptResult {
   width: 50%;
   height: 35vh;
@@ -183,3 +189,6 @@
   }
 
 }
+/*  */
+
+

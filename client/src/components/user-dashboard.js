@@ -102,11 +102,6 @@ export default function UserDashboard() {
             })}
             </div>
             
-            {/* {user_data && user_data.map((userData) => {
-                return (
-                    <UserDataDetails key={userData._id} userData={userData} />
-                )
-            })} */}
         </div>
     
     
