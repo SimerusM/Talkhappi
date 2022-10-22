@@ -46,6 +46,7 @@ const styles = {
     justifyContent: 'space-between',
     flexWrap: ['wrap', null, null, 'nowrap'],
     pb: [0, 7, 0, null, 7],
+    paddingTop: '5em',
   },
   contentBox: {
     flexShrink: 0,

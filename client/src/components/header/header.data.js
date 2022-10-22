@@ -11,10 +11,6 @@ export const menuItems = [
     path: 'workflow',
     label: 'Instructions',
   },
-  {
-    path: 'testimonial',
-    label: 'Testimonial',
-  },
 ];
 
 export const additionLinks = [

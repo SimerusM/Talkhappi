@@ -10,23 +10,23 @@ export default {
       altText: 'Community',
       title: 'Join the Community',
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit sed eiusmod tempor.',
+        'Join the Talkhappi community by visiting our Instagram page! Feel free to post anything about us!',
     },
     {
       id: 2,
       iconSrc: Community,
       altText: 'Chat',
-      title: 'Chat Communication',
+      title: 'Chat with Us',
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit sed eiusmod tempor.',
+        'Reach out to us on Instagram if you have any concerns or questions about the website!',
     },
     {
       id: 3,
       iconSrc: Github,
       altText: 'Github',
-      title: 'Github Access',
+      title: 'Project development',
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit sed eiusmod tempor.',
+        'Want to help revolutionalize mental health wellness with us? Reach out to us to inquire about joining!',
     },
   ],
   menuItem: [
@@ -35,20 +35,13 @@ export default {
       label: 'Home',
     },
     {
-      path: '/',
-      label: 'Adversite',
+      path: 'https://www.instagram.com/talkhappi/?hl=en',
+      label: 'Instagram',
     },
     {
-      path: '/',
-      label: 'Supports',
+      path: 'https://www.linkedin.com/company/talkhappi/mycompany/',
+      label: 'Linkedin',
     },
-    {
-      path: '/',
-      label: 'Marketing',
-    },
-    {
-      path: '/',
-      label: 'Contact',
-    },
+
   ],
 };

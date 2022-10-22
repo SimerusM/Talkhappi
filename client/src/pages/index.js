@@ -76,9 +76,8 @@ export default function HomePage() {
             <KeyFeature />
             <ServiceSection />
             {/* <Feature /> */}
-            <CoreFeature />
             <WorkFlow />
-            <TestimonialCard />
+            <CoreFeature />
             <TeamSection />
             {/* <TestimonialCard />
             <BlogSection />
