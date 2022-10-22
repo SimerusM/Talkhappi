@@ -6,8 +6,8 @@ import TeamCard from 'components/team-card';
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 import Member1 from 'assets/team/member-1.png';
-import Member2 from 'assets/team/member-2.png';
-import Member3 from 'assets/team/member-3.png';
+import Member2 from 'assets/team/flowboat-sim-modified.png';
+import Member3 from 'assets/team/wajih-modified.png';
 import Member4 from 'assets/team/member-4.png';
 import Member5 from 'assets/team/member-5.png';
 import Member6 from 'assets/team/member-6.png';
@@ -18,7 +18,7 @@ const data = [
     imgSrc: Member1,
     altText: 'Anupam Chettimada',
     title: 'Anupam Chettimada',
-    designation: 'Chief Operations Manager',
+    designation: 'Chief Operating Officer',
     socialProfile: [
       {
         id: 1,
@@ -45,7 +45,7 @@ const data = [
     imgSrc: Member2,
     altText: 'Simerus Mahesh',
     title: 'Simerus Mahesh',
-    designation: 'CTO and Developer',
+    designation: 'Chief Technology Officer',
     socialProfile: [
       {
         id: 1,
@@ -72,7 +72,7 @@ const data = [
     imgSrc: Member3,
     altText: 'Wajih Salam Khan',
     title: 'Wajih Salam Khan',
-    designation: 'Developer',
+    designation: 'Front-end Developer',
     socialProfile: [
       {
         id: 1,
@@ -103,7 +103,7 @@ export default function TeamSection() {
       <Container>
         <SectionHeader
           slogan="our team"
-          title="The most qualified and talented individuals"
+          title="Meet our Co-Founders"
         />
 
         <Grid sx={styles.grid}>

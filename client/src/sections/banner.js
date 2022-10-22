@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import { Container, Box, Heading, Text, Image, Button } from 'theme-ui';
-import BannerImg from 'assets/blog/banner-img.jpg';
+import BannerImg from 'assets/blog/t-happi-landing.jpeg';
 import ShapeLeft from 'assets/shape-left.png';
 import ShapeRight from 'assets/shape-right.png';
 import Link from 'next/link';
@@ -17,10 +17,6 @@ export default function Banner() {
           <Text as="p" variant="heroSecondary">
             Get access to our powerful and accurate mental health wellness counselling product which uses Machine Learning and Artificial Intelligence to help you better yourself using the concept of gamification!
           </Text>
-          <Link href="/product">
-            <Button variant="primary">Explore</Button>
-          </Link>
-          
         </Box>
 
         <Box sx={styles.banner.imageBox}>

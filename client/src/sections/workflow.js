@@ -10,27 +10,27 @@ import ArrowEven from 'assets/arrowEven.svg';
 const data = [
   {
     id: 1,
-    title: 'Set disbursement Instructions',
+    title: 'Create an account',
     text:
-      'Get your blood tests delivered at home collect a sample from the your blood tests.',
+      'Sign up if you do not have an account to access our AI counselling product. ',
   },
   {
     id: 2,
-    title: 'Assembly retrieves funds from your account',
+    title: 'Tell our AI about anything',
     text:
-      'Get your blood tests delivered at home collect a sample from the your blood tests.',
+      'Our AI has been designed to provide an answer to virtually anything you ask it.',
   },
   {
     id: 3,
-    title: 'Assembly initiates disbursement',
+    title: 'Receive feedback',
     text:
-      'Get your blood tests delivered at home collect a sample from the your blood tests.',
+      'After you talk to our AI, it will provide you with a score and feedback for you to improve!',
   },
   {
     id: 4,
-    title: 'Customer receives funds payment',
+    title: 'Repeat and progress',
     text:
-      'Get your blood tests delivered at home collect a sample from the your blood tests.',
+      'See previous results in your dashboard and use the product over time to see your progression!',
   },
 ];
 

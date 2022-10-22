@@ -12,10 +12,10 @@ const data = [
   {
     id: 1,
     imgSrc: Performance,
-    altText: 'Fast Performance',
-    title: 'Fast Performance',
+    altText: 'Performance',
+    title: 'Performance',
     text:
-      'We know the lengthy wait times for counsellors online/in-person, skip the wait and use our product!',
+      'We know the lengthy wait for counsellors. Skip the wait with our product brining you fast results!',
   },
   {
     id: 2,
@@ -23,23 +23,23 @@ const data = [
     altText: 'Safety',
     title: 'Safety',
     text:
-      'Safety concerns? We have partnered with many schools to help make this as safe as possible!',
+      'With our advanced security features, your data will not be shown to anyone but you!',
   },
   {
     id: 3,
     imgSrc: Subscription,
-    altText: 'Access',
-    title: 'Access',
+    altText: 'Dashboard',
+    title: 'Dashboard',
     text:
-      "You'll have free access to all that we have to offer! Simply, just make an account and start your journey!",
+      "You get access to our dashboard that tracks your usages and feedback received over time!",
   },
   {
     id: 4,
     imgSrc: Support,
-    altText: 'Support',
-    title: 'Support',
+    altText: 'Accessibility',
+    title: 'Accessibility',
     text:
-      'Text',
+      'Away from home? As long as you have WiFi and a device, you are able to access this website!',
   },
 ];
 

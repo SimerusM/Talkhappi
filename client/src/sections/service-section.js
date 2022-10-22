@@ -23,15 +23,15 @@ import Secure from 'assets/services/secure.svg';
 
 const data = {
   subTitle: 'our services',
-  title: 'Virtual Counselling',
+  title: 'AI Counselling',
   features: [
     {
       id: 1,
       imgSrc: Smart,
-      altText: 'Save Time',
-      title: 'Save Time',
+      altText: 'Self Counselling',
+      title: 'Self Counselling',
       text:
-        'text text text',
+        'Get access to our counselling platform that allows you to speak to our AI and receive tailored feedback and tips to help you improve.',
     },
     {
       id: 2,
@@ -39,7 +39,7 @@ const data = {
       altText: 'Accurate Results',
       title: 'Accurate Results',
       text:
-        'text text text',
+        'Our AI has been tested numerous times and has an accuracy of over 90% for identifying your situation and providing an output based on that.',
     },
   ],
 };

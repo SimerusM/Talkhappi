@@ -8,11 +8,11 @@ import shapePattern from 'assets/shape-pattern2.png';
 
 const data = {
   subTitle: 'About us',
-  title: 'Learn More About Talkhappi',
+  title: 'How we Originated',
   description:
-    'Our services track your progress overtime and helps you improve your hAPPi scores with personalized tips and advice! You can see your improvement through your unique user profile, where you can also access help to emergency mental services! Our internationally recognized technologies bring a brand new approach on traditional mental health counseling, making it accesible and reliable.',
-  btnName: 'Get Started',
-  btnURL: '#',
+    'We formed during the quarantine where we recognized the problem people faced with isolation and no one to talk to. We aspire to reach out to those who feel like they do not have anyone they can reach out to and help them through whatever they are going through. Whether you are simply trying to improve yourself or are going through a situation, we aspire to provide you an outlet to let out your feelings!',
+  btnName: 'Our Instagram',
+  btnURL: 'https://www.instagram.com/talkhappi/?hl=en',
 };
 
 export default function CoreFeature() {
