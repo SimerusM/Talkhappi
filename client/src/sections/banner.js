@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import { Container, Box, Heading, Text, Image, Button } from 'theme-ui';
-import BannerImg from 'assets/blog/t-happi-landing.jpeg';
+import BannerImg from 'assets/blog/t-happi-landing-modified.png';
 import ShapeLeft from 'assets/shape-left.png';
 import ShapeRight from 'assets/shape-right.png';
 import Link from 'next/link';
