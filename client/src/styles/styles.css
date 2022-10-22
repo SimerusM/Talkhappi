@@ -42,7 +42,7 @@
     color: white;
     background-color: #ff7795;
 }
-/*  */
+/* End */
 
 /* PopUpWindow media */
 
@@ -58,7 +58,7 @@
   }
 }
 
-/*  */
+/* End */
 
 /* Scroll bar feedback section */
 
@@ -76,4 +76,110 @@
 ::-webkit-scrollbar-corner { 
   background: #EA3A60; 
   border-radius: 10px;
+}
+
+/* End */
+
+
+/* loading screen animation */
+
+#preloader {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+#loader {
+  position: relative;
+  
+  width: 120px;
+  height: 120px;
+  margin-top: 20px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #FF9BB2;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+#loader:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #d42c53;
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+}
+#loader:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #dd3980;
+  -webkit-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
+}
+@-webkit-keyframes spin {
+  0%   {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+  100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0%   {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+  100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+}
+
+/* End */
+
+/* Results Pop Up media */
+
+.transcriptResult {
+  width: 50%;
+  height: 35vh;
+}
+
+.graphResult {
+  width: 40%;
+}
+
+@media screen and (max-width: 630px) {
+  .resultsBoxContainer {
+    flex-direction: column;
+  }
+
+  .transcriptResult {
+    width: 100%;
+    height: 10vh;
+  }
+
+  .graphResult {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
 }

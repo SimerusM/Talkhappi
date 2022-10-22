@@ -1,6 +1,13 @@
 import React, { Component, useEffect, useState } from 'react';
 import { BsXCircle } from "react-icons/bs";
+import {Chart as ChartJs, Tooltip, Title, ArcElement, Legend} from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+import { m } from 'framer-motion';
 
+ChartJs.register(
+    Tooltip, Title, ArcElement, Legend
+  );
+  
 
 const styles = {
     popUpBoxContainer: {
@@ -17,9 +24,15 @@ const styles = {
         
     },
     
+    closeBtnContainer: {
+        width: '90%',
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+    
     popUpBox: {
         position: 'relative',
-        minHeight: 'auto',
+        minHeight: '200px',
         maxHeight: 'auto',
         minWidth: '300px',
         backgroundColor: '#fff',
@@ -42,19 +55,104 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
      
+    },
+
+    resultsContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    resultsBoxContainer: {
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        margin: '20px',
+        width: '90%',
+        alignItems: 'center'
+    },
+
+
+    feedbackContainer: {
+        
+        width: '90%',
+        backgroundColor: '#EA3A60',
+        padding: '10px',
+        borderRadius: '5px',
+        minHeight: '140px',
+        maxHeight: '200px',
+        color: '#fff',
+        overFlow: 'scroll'
+    },
+
+    transcriptConatiner: {
+       
+        backgroundColor: '#EA3A60',
+        padding: '10px',
+        borderRadius: '5px',
+        minWidth: '100px',
+        minHeight: '140px',
+        color: '#fff',
+        overFlow: 'scroll',
+        
+        display: 'flex',
+        justifyContent: 'center'
+    },
+
+    graphContainer: {
+     
+
+        display: 'flex',
+        justifyContent: 'center',
+        height: '100%'
     }
+
 }
 
 
 function LoadingSection () {
-    return (<>loading</>)
+    return (
+        <div id="preloader">
+            <div id="loader"></div>
+        </div>
+    )
 }
 
 
-function ResultsSection ( { data }) {
-    return (<>
-        results
-    </>)
+function ResultsSection ( { UserData }) {
+
+    console.log(UserData)
+    const data = {
+        datasets: [{
+            data: [UserData[0], (100-UserData[0])],
+            backgroundColor:[
+              'red',
+              '#FF9BB2'
+            ]
+        },
+      ],
+
+      labels: [
+        'Score'
+    ], 
+    };
+
+
+    return (
+        <div style={styles.resultsContainer}>
+            <div style={styles.resultsBoxContainer} className="resultsBoxContainer">
+                <div style={styles.graphContainer} className="graphResult"><Doughnut data={data}/></div>
+                <div style={styles.transcriptConatiner} className='scroll transcriptResult' >{UserData[2]}</div>
+            </div>
+
+            <div>Feedback</div>
+            <div style={styles.feedbackContainer} className='scroll' >{UserData[1]}</div>
+            
+            
+        </div>  
+        
+    )
 }
 
 export default function ResultsPopUpWin ({ callback , dataReceived, userData}) {
@@ -62,13 +160,18 @@ export default function ResultsPopUpWin ({ callback , dataReceived, userData}) {
         <div style={styles.popUpBoxContainer}>
             <div style={styles.popUpBox} className="popUpWindow">
                 <div style={styles.itemsContainer}>   
-                    <BsXCircle size="1.5em" color='#EA3A60' onClick={callback}/>
+                    <div style={styles.closeBtnContainer}>
+                        <BsXCircle size="1.5em" color='#EA3A60' onClick={callback}/>
+                    </div>
 
                     {/* loading screen */}
                     {!dataReceived && <LoadingSection/>}
 
                     {/* results screen */}
-                    {(dataReceived && userData) && <ResultsSection data={userData}/>}
+                    {(dataReceived && userData) && <ResultsSection UserData={userData}/>}
+
+
+                    {/* <ResultsSection UserData={[10, "gdsal;fksalfd", "fdsajflkdsajlfkjsa;"]}/> */}
                 </div>
                 
             </div>

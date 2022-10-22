@@ -90,13 +90,14 @@ export default function ProductInput() {
   } = useSpeechRecognition();
 
 
-  const { user_data, dispatch } = useUserDataContext()
+  const { dispatch } = useUserDataContext()
   const { user } = useAuthContext()
   // testing
   const [id, setId] = useState('123456')
   const [scores, setScores] = useState('182347')
   const [popUpOpen, setpopUpOpen] = useState(false)
   const [dataReceived, setDataReceived] = useState(false)
+  const [currentData, setCurrentData] = useState([])
 
 
   const handleAdd = async (e) => {
@@ -130,7 +131,11 @@ export default function ProductInput() {
           console.log(feedback)
           console.log(score)
           console.log('Data added')
+          await setCurrentData([score, feedback, userData.transcript])
+          resetTranscript
           setDataReceived(true)
+
+          
       }
     }
 
@@ -147,7 +152,7 @@ export default function ProductInput() {
   return (
       <div style={styles.container}>
 
-          {popUpOpen && <ResultsPopUpWin callback={() => {setpopUpOpen(false)}} dataReceived={dataReceived} userData={dataReceived ? user_data : null}/>}
+          {(popUpOpen) && <ResultsPopUpWin callback={() => {setpopUpOpen(false); setCurrentData([]); setDataReceived(false)}} dataReceived={dataReceived} userData={currentData}/>}
 
           <div style={styles.speechTitle}>Talk to us, tell us about your day...</div>
           <div style={styles.speechBox}>
