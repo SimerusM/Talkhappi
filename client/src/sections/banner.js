@@ -15,7 +15,7 @@ export default function Banner() {
             Changing Mental Wellness
           </Heading>
           <Text as="p" variant="heroSecondary">
-            Get access to our powerful and accurate mental health wellness counselling product which uses Machine Learning and Artificial Intelligence to help you better yourself using the concept of gamification!
+            The first AI-based therapist designed to help you
           </Text>
         </Box>
 
