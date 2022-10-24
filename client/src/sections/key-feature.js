@@ -48,7 +48,7 @@ export default function KeyFeature() {
     <section sx={{ variant: 'section.keyFeature' }} id="feature">
       <Container>
         <SectionHeader
-          slogan="Whats the function"
+          slogan="What’s the function"
           title="Features of Talkhappi"
         />
 

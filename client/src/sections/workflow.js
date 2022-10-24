@@ -16,7 +16,7 @@ const data = [
   },
   {
     id: 2,
-    title: 'Tell our AI about anything',
+    title: 'Talk to our AI therapist',
     text:
       'Our AI has been designed to provide an answer to virtually anything you ask it.',
   },
@@ -39,7 +39,7 @@ export default function WorkFlow() {
     <section sx={styles.workflow} id="workflow">
       <Container>
         <SectionHeader
-          slogan="Whats the function"
+          slogan="What’s the function"
           title="Let’s see how it works"
           isWhite={true}
         />
