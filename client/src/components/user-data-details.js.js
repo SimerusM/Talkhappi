@@ -19,7 +19,7 @@ const UserDataDetails = ({ userData }) => {
 
     // function to delete user data
     const DeleteUserData = async () => {
-        const response = await fetch('http://localhost:5000/api/userData/' + userData._id, {
+        const response = await fetch('https://talkhappi-api.herokuapp.com' + '/api/userData/' + userData._id, {
             method: 'DELETE'
         })
         const json = await response.json()
