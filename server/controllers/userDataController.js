@@ -37,62 +37,116 @@ const getUserData = async (req, res) => {
     res.status(200).json(user_data)
 }
 
+// const { Configuration, OpenAIApi } = require("openai");
+// // create new user data
+// const createUserData = async (req, res) => {
+//     const {id, scores, transcript} = req.body
+//     const user_id = req.user._id
+
+//     const configuration = new Configuration({
+//         apiKey: process.env.OPENAI_API_KEY,
+//     });
+//     const openai = new OpenAIApi(configuration);
+
+//     // feedback
+//     const response = await openai.createCompletion({
+//         model: "text-davinci-002",
+//         prompt: "Provide personal feedback for me and give me tips: " + transcript,
+//         temperature: 1,
+//         max_tokens: 200,
+//         top_p: 1,
+//         frequency_penalty: 0,
+//         presence_penalty: 0,
+//     });
+
+//     // score
+//     const response2 = await openai.createCompletion({
+//         model: "text-davinci-002",
+//         prompt: "Give this text a number from 1-100 in terms of positivity: " + transcript,
+//         temperature: 1,
+//         max_tokens: 100,
+//         top_p: 1,
+//         frequency_penalty: 0,
+//         presence_penalty: 0,
+//     });
+
+//     // console.log(response.data.choices[0].text)
+//     // console.log(response2.data.choices)
+
+//     const newUserData = new UserData({
+//         id: 'user',
+//         scores: response2.data.choices[0].text,
+//         transcript: transcript,
+//         user_id: user_id,
+//         feedback: response.data.choices[0].text
+//     })
+
+//     console.log(newUserData)
+//     // add doc to db
+//     try {
+//         await newUserData.save()
+//     } catch (error) {
+//         res.status(400).json({error: error.message})
+//     }
+
+//     console.log('POST:', newUserData)
+//     return res.status(201).json({user_data: newUserData, feedback: response.data.choices[0].text, score: response2.data.choices[0].text})
+// }
 const { Configuration, OpenAIApi } = require("openai");
 // create new user data
 const createUserData = async (req, res) => {
-    const {id, scores, transcript} = req.body
-    const user_id = req.user._id
-
-    const configuration = new Configuration({
-        apiKey: process.env.OPENAI_API_KEY,
-    });
-    const openai = new OpenAIApi(configuration);
-
-    // feedback
-    const response = await openai.createCompletion({
-        model: "text-davinci-002",
-        prompt: "Provide personal feedback for me and give me tips: " + transcript,
-        temperature: 1,
-        max_tokens: 200,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0,
-    });
-
-    // score
-    const response2 = await openai.createCompletion({
-        model: "text-davinci-002",
-        prompt: "Give this text a number from 1-100 in terms of positivity: " + transcript,
-        temperature: 1,
-        max_tokens: 100,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0,
-    });
-
-    // console.log(response.data.choices[0].text)
-    // console.log(response2.data.choices)
-
-    const newUserData = new UserData({
-        id: 'user',
-        scores: response2.data.choices[0].text,
-        transcript: transcript,
-        user_id: user_id,
-        feedback: response.data.choices[0].text
-    })
-
-    console.log(newUserData)
-    // add doc to db
     try {
-        await newUserData.save()
+        const { id, scores, transcript } = req.body
+        const user_id = req.user._id
+
+        const configuration = new Configuration({
+            apiKey: process.env.OPENAI_API_KEY,
+        });
+        const openai = new OpenAIApi(configuration);
+
+        // feedback
+        const response = await openai.createCompletion({
+            model: "text-davinci-002",
+            prompt: "Provide personal feedback for me and give me tips: " + transcript,
+            temperature: 1,
+            max_tokens: 200,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+        });
+
+        // score
+        const response2 = await openai.createCompletion({
+            model: "text-davinci-002",
+            prompt: "Give this text a number from 1-100 in terms of positivity: " + transcript,
+            temperature: 1,
+            max_tokens: 100,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+        });
+
+        // console.log(response.data.choices[0].text)
+        // console.log(response2.data.choices)
+
+        const newUserData = new UserData({
+            id: 'user',
+            scores: response2.data.choices[0].text,
+            transcript: transcript,
+            user_id: user_id,
+            feedback: response.data.choices[0].text
+        })
+
+        console.log(newUserData)
+        // add doc to db
+        await newUserData.save();
+        console.log('POST:', newUserData)
+        res.status(201).json({ user_data: newUserData, feedback: response.data.choices[0].text, score: response2.data.choices[0].text })
     } catch (error) {
-        res.status(400).json({error: error.message})
+        console.log(error);
+        res.status(400).json({ error: error.message })
     }
-
-    console.log('POST:', newUserData)
-    return res.status(201).json({user_data: newUserData, feedback: response.data.choices[0].text, score: response2.data.choices[0].text})
 }
-
 
 
 // delete user data
