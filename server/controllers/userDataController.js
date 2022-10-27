@@ -107,7 +107,7 @@ const createUserData = async (req, res) => {
         // feedback
         const response = await openai.createCompletion({
             model: "text-davinci-002",
-            prompt: "Provide personal feedback for me and give me tips: " + transcript,
+            prompt: "Give me feedback tips to help me improve: " + transcript,
             temperature: 1,
             max_tokens: 200,
             top_p: 1,
