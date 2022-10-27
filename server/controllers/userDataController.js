@@ -118,7 +118,7 @@ const createUserData = async (req, res) => {
         // score
         const response2 = await openai.createCompletion({
             model: "text-davinci-002",
-            prompt: "Give this text a number from 1-100 in terms of positivity: " + transcript,
+            prompt: "Only give me a number, no other words, from 1-100 in terms of how positive the text is: " + transcript,
             temperature: 1,
             max_tokens: 100,
             top_p: 1,
