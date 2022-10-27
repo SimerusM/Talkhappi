@@ -14,7 +14,7 @@ export default function Banner() {
           <Heading as="h2" variant="heroPrimary">
             Changing Mental Wellness
           </Heading>
-          <Text as="p" variant="heroSecondary">
+          <Text as="p" variant="heroSecondary" sx-={{fontSize: 19}}>
             The first AI-based therapist designed to help you
           </Text>
         </Box>
@@ -28,6 +28,7 @@ export default function Banner() {
 }
 
 const styles = {
+
   banner: {
     pt: ['140px', '145px', '155px', '170px', null, null, '180px', '215px'],
     pb: [2, null, 0, null, 2, 0, null, 5],
