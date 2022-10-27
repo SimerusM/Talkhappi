@@ -15,7 +15,7 @@ const AddUserData = ({ userData }) => {
             return
         }
 
-        const response = await fetch('http://localhost:5000/api/userData/', {
+        const response = await fetch('https://talkhappi-api.herokuapp.com' + '/api/userData/', {
             method: 'POST',
             body: JSON.stringify(userData),
             headers: {

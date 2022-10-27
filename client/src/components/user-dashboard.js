@@ -63,7 +63,7 @@ export default function UserDashboard() {
 
     useEffect(() => {
         const fetchUserData = async () => {
-        const response = await fetch('http://localhost:5000/api/userData/', {
+        const response = await fetch('https://talkhappi-api.herokuapp.com' + '/api/userData/', {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
