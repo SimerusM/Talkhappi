@@ -15,7 +15,7 @@ import TextFeature from 'components/text-feature';
 import ModalVideo from 'react-modal-video';
 import { IoIosPlay } from 'react-icons/io';
 
-import ServiceThumb from 'assets/service-thumb.png';
+import ServiceThumb from 'assets/video-thumb.png';
 import shapePattern from 'assets/shape-pattern1.png';
 
 import Smart from 'assets/services/smart.svg';
