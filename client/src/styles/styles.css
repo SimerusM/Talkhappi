@@ -192,3 +192,11 @@
 /*  */
 
 /*  */
+
+.submitBtn {
+  background: #ff85a2; 
+}
+.submitBtn:hover {
+  background: #EA3A60; 
+  border-radius: 10px;
+}

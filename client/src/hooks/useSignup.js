@@ -30,6 +30,7 @@ export const useSignup = () => {
 
             setIsLoading(false)
         }
+        return json.error
     }
 
     return { signup, isLoading, error }

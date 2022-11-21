@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuthContext } from './useAuthContext'
 
 export const useLogin = () => {
@@ -24,12 +24,15 @@ export const useLogin = () => {
         if (response.ok) {
             // save the user to local storage using jwt
             localStorage.setItem('user', JSON.stringify(json))
-
+            
             // update auth context
             dispatch({type: 'LOGIN', payload: json})
 
             setIsLoading(false)
+            
         }
+   
+        return json.error
     }
 
     return { login, isLoading, error }

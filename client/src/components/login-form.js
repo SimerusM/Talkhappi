@@ -34,6 +34,8 @@ const styles = {
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'center',
+        
         borderRadius: '4px',
 
     },
@@ -49,11 +51,11 @@ const styles = {
     }, 
 
     buttonInput: {
-        marginTop: '70px',
+        marginTop: '40px',
         padding: '10px',
         border: 'none',
         borderRadius: '10px',
-        background: '#f02c56',
+        // background: '#f02c56',
         color: "#fff",
         fontSize: '14px',
         cursor: 'pointer'
@@ -70,24 +72,40 @@ const styles = {
         color: '#e7195a',
         borderRadius: '4px',
         margin: '20px 0'
+    },
+
+    loadingContainer: {
+        width: '100%',
+        
     }
 }
 
-
+function LoadingSection () {
+    return (
+        <div id="preloader">
+            <div id="loader"></div>
+        </div>
+    )
+}
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {login, error, isLoading} = useLogin()
     const router = useRouter()
+    const [clicked, setClicked] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        setClicked(true)
         console.log(email, password)
-        await login(email, password)
+        
+        let result = await login(email, password)
+        console.log(result)
 
-        await !error && router.push('/')        
+        !result && router.push('/dashboard')
+        result = null
+        setClicked(false)
     }
 
     return (
@@ -117,7 +135,10 @@ const Login = () => {
                         className="input-field"
                     />
 
-                    <button style={styles.buttonInput} disabled={isLoading}>Log in</button>
+                    <div style={styles.loadingContainer}>{clicked && <LoadingSection/>}</div>
+                    <button style={styles.buttonInput} disabled={isLoading} className="submitBtn">Log in</button>
+
+                    
                     {error && <div style={styles.error}>{error}</div>}
                 </form>
             </div>

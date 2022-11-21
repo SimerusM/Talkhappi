@@ -49,11 +49,11 @@ const styles = {
     }, 
 
     buttonInput: {
-        marginTop: '70px',
+        marginTop: '40px',
         padding: '10px',
         border: 'none',
         borderRadius: '10px',
-        background: '#f02c56',
+        // background: '#f02c56',
         color: "#fff",
         fontSize: '14px',
         cursor: 'pointer'
@@ -70,23 +70,37 @@ const styles = {
         color: '#e7195a',
         borderRadius: '4px',
         margin: '20px 0'
+    },
+
+    loadingContainer: {
+        width: '100%',
+        
     }
 }
 
+function LoadingSection () {
+    return (
+        <div id="preloader">
+            <div id="loader"></div>
+        </div>
+    )
+}
 
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {signup, error, isLoading} = useSignup()
     const router = useRouter()
+    const [clicked, setClicked] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        setClicked(true)
         console.log(email, password)
-        await signup(email, password)
-
-        await !error && router.push('/')
+        let result = await signup(email, password)
+        !result && router.push('/product')
+        result = null
+        setClicked(false)
     }
 
     return (
@@ -116,7 +130,8 @@ const Signup = () => {
                         className="input-field"
                     />
 
-                    <button style={styles.buttonInput} disabled={isLoading}>Sign up</button>
+                    <div style={styles.loadingContainer}>{clicked && <LoadingSection/>}</div>
+                    <button style={styles.buttonInput} disabled={isLoading} className="submitBtn">Sign up</button>
                     {error && <div style={styles.error}>{error}</div>}
                 </form>
             </div>
