@@ -10,7 +10,7 @@ export default {
       altText: 'Community',
       title: 'Join the Community',
       description:
-        'Join the Talkhappi community by visiting our Instagram page! Feel free to post anything about us!',
+        'Join the THERHAPI community by visiting our Instagram page! Feel free to post anything about us!',
     },
     {
       id: 2,

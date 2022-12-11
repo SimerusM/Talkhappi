@@ -24,7 +24,7 @@ export default function Footer() {
         {/* End of footer widgets area */}
         <Box sx={styles.footer.footerBottomArea}>
           <Link path="/" style={{ textDecoration: 'none' }}>
-            <p sx={styles.logoText}>TALKHAPPI</p>
+            <p sx={styles.logoText}>THERHAPI</p>
           </Link>
           <Box sx={styles.footer.menus}>
             <nav>
@@ -39,7 +39,7 @@ export default function Footer() {
             </nav>
           </Box>
           <Text sx={styles.footer.copyright}>
-            Copyright by {new Date().getFullYear()} Talkhappi
+            Copyright by {new Date().getFullYear()} THERHAPI
           </Text>
         </Box>
       </Container>
