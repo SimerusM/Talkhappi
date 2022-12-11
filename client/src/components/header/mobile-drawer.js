@@ -78,7 +78,7 @@ const MobileDrawer = () => {
       <Scrollbars autoHide>
         <Box sx={styles.content}>
 
-          <a href="/" style={styles.logoLink}><p style={styles.logoText}>TALKHAPPI</p></a>
+          <a href="/" style={styles.logoLink}><p style={styles.logoText}>THERHAPI</p></a>
 
           <Box sx={styles.menu}>
           
