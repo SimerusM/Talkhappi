@@ -71,7 +71,7 @@ export default function HomePage() {
     <ThemeProvider theme={theme}>
         <StickyProvider>
           <Layout>
-            <SEO title="Talkhappi" />
+            <SEO title="Therhapi" />
             <Banner />
             <KeyFeature />
             <ServiceSection />
