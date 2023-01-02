@@ -35,11 +35,11 @@ export default {
       label: 'Home',
     },
     {
-      path: 'https://www.instagram.com/talkhappi/?hl=en',
+      path: '/',
       label: 'Instagram',
     },
     {
-      path: 'https://www.linkedin.com/company/talkhappi/mycompany/',
+      path: 'https://www.linkedin.com/company/therahapi/mycompany/',
       label: 'Linkedin',
     },
 
