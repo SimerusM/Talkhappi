@@ -24,7 +24,7 @@ export default function Footer() {
         {/* End of footer widgets area */}
         <Box sx={styles.footer.footerBottomArea}>
           <Link path="/" style={{ textDecoration: 'none' }}>
-            <p sx={styles.logoText}>THERHAPI</p>
+            <p sx={styles.logoText}>TALKHAPPI</p>
           </Link>
           <Box sx={styles.footer.menus}>
             <nav>
