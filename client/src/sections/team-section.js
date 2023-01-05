@@ -160,6 +160,8 @@ const styles = {
       null,
       'repeat(2,1fr)',
       null,
+      'repeat(2,1fr)',
+      null,
       'repeat(3,1fr)',
     ],
   },

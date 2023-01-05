@@ -24,8 +24,8 @@ export default function CoreFeature() {
             subTitle={data.subTitle}
             title={data.title}
             description={data.description}
-            // btnName={data.btnName}
-            // btnURL={data.btnURL}
+            btnName={data.btnName}
+            btnURL={data.btnURL}
           />
         </Box>
         <Box sx={styles.thumbnail}>
