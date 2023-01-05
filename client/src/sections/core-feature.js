@@ -12,7 +12,7 @@ const data = {
   description:
     'We formed during the quarantine where we recognized the problem people faced with isolation and no one to talk to. We aspire to reach out to those who feel like they do not have anyone they can reach out to and help them through whatever they are going through. Whether you are simply trying to improve yourself or are going through a situation, we aspire to provide you an outlet to let out your feelings!',
   btnName: 'Our Instagram',
-  btnURL: '',
+  btnURL: 'https://www.instagram.com/talkhappi/',
 };
 //https://www.instagram.com/talkhappi/?hl=en
 export default function CoreFeature() {

@@ -34,7 +34,7 @@ export default function Header({ className }) {
 
         <Container sx={styles.container}>
 
-          <a href="/" sx={styles.logoLink}><p sx={styles.logoText}>THERHAPI</p></a>
+          <a href="/" sx={styles.logoLink}><p sx={styles.logoText}>TALKHAPPI</p></a>
 
 
           <Flex as="nav" sx={styles.nav}>

@@ -10,7 +10,7 @@ export default {
       altText: 'Community',
       title: 'Join the Community',
       description:
-        'Join the THERHAPI community by visiting our Instagram page! Feel free to post anything about us!',
+        'Join the TALKHAPPI community by visiting our Instagram page! Feel free to post anything about us!',
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ export default {
       label: 'Home',
     },
     {
-      path: '/',
+      path: 'https://www.instagram.com/talkhappi/',
       label: 'Instagram',
     },
     {
