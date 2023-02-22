@@ -112,7 +112,7 @@ export default function ProductInput() {
           return
       }
 
-      const response = await fetch('https://talkhappi-api.herokuapp.com' + '/api/userData/', {
+      const response = await fetch('https://talkhappi-api.onrender.com' + '/api/userData/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {

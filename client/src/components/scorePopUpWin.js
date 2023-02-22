@@ -117,7 +117,7 @@ export default function ScorePopUpWin ({ callback , list_id }) {
             return
         }
 
-        const response = await fetch('https://talkhappi-api.herokuapp.com' + '/api/userData/' + list_id._id, {
+        const response = await fetch('https://talkhappi-api.onrender.com' + '/api/userData/' + list_id._id, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`
